@@ -1,9 +1,8 @@
 import './ticket-details.scss';
 import React from 'react'
 import Button from '@material-ui/core/Button';
+import withHF from '../HOC/withHF';
 import TextField from '@material-ui/core/TextField';
-import { createMuiTheme } from '@material-ui/core/styles';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import { getTicketDetails } from '../../services/ticket';
 
 class TicketDetails extends React.Component {
@@ -13,15 +12,7 @@ class TicketDetails extends React.Component {
         .then(data => {});
     }
     render() {
-      const theme = createMuiTheme({
-        palette: {
-          primary: {
-            main: '#02C4C9',
-          }
-        }
-      });
         return (
-          <ThemeProvider theme={theme}>
             <div className="ticket-details">
                 <form className="form-details" noValidate autoComplete="off">
                     <div className="form-field">
@@ -39,8 +30,7 @@ class TicketDetails extends React.Component {
                     </Button>
                 </div>
             </div>
-            </ThemeProvider>
         )
     }
 }
-export default TicketDetails
+export default withHF(TicketDetails)
