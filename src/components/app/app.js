@@ -13,7 +13,7 @@ class App extends React.Component {
         <div className="upload--button">
           <h3>{language_text.HOME_COMPONENT.UPLOAD_BUTTON_TEXT}</h3>
           <p>{language_text.HOME_COMPONENT.UPLOAD_BUTTON_LABEL}</p>
-          <React.Fragment><label className="upload--btn">+ <input type="file" onChange={(e) => this.props.uploadImage(e.target.files, history)} /></label></React.Fragment>
+          <React.Fragment><label className="upload--btn">+ <input type="file" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} /></label></React.Fragment>
         </div>
       </div>
     );

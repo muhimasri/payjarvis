@@ -1,13 +1,25 @@
 import './ticket-upload.scss';
-import withHF from '../HOC/withHF';
-import React from 'react'
+import withF from '../HOC/withF';
+import React from 'react';
+import { connect } from 'react-redux';
 
 class TicketUpload extends React.Component {
+    componentWillMount = () => {
+        const { image, history } = this.props;
+        if(!image.file || !image.url)
+            history.push('/')
+    }
 
     render() {
+        const { image } = this.props;
         return (
-          <h1>This is ticket upload page</h1>
+          <img src={image.url} />
         )
     }
 }
-export default withHF(TicketUpload)
+function mapStateToProps(state) {
+    return {
+      image: state.image
+    };
+  }
+export default connect(mapStateToProps, null) (withF(TicketUpload));

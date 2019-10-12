@@ -1,7 +1,7 @@
 import './ticket-details.scss';
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import withHF from '../HOC/withHF';
+import withF from '../HOC/withF';
 import TextField from '@material-ui/core/TextField';
 import { getTicketDetails } from '../../services/ticket';
 
@@ -33,4 +33,4 @@ class TicketDetails extends React.Component {
         )
     }
 }
-export default withHF(TicketDetails)
+export default withF(TicketDetails)

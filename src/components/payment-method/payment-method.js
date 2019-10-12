@@ -1,6 +1,6 @@
 import './payment-method.scss';
 import React from 'react';
-import withHF from '../HOC/withHF';
+import withF from '../HOC/withF';
 import utils from '../../services/utils';
 
 class PaymentMethod extends React.Component {
@@ -17,4 +17,4 @@ class PaymentMethod extends React.Component {
         )
     }
 }
-export default withHF(PaymentMethod)
+export default withF(PaymentMethod)
