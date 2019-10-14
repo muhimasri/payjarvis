@@ -6,12 +6,15 @@ class Footer extends React.Component {
     render() {
         const { language_text } = this.props;
         return (
-          <div className="footer-section">
+          <div className="cantainer-footer">
               <p>{language_text.FOOTER_TEXT}</p>
-              <ul>
+              <div class="condition-link">
                   {language_text.FOOTER_LINKS.map((o, i) => (
-                      <li key={i}>{o}</li>
+                      <a href="#" key={i}>{o}</a>
                   ))}
+              </div>
+              <ul>
+                  
               </ul>
           </div>
         )

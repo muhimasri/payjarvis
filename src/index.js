@@ -7,13 +7,16 @@ import TicketDetails from './components/ticket-details'
 import App from './components/app';
 import PaymentMethod from './components/payment-method';
 import TicketUpload from './components/ticket-upload';
+import ConfirmDetails from './components/confirm-details';
+import Payment from './components/payment-receipt';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 //THIS IS REDUX IMPORT
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import jarvisApp from './reducers';
-const store = createStore(jarvisApp);
+const store = createStore(jarvisApp, applyMiddleware(thunk));
 
 const theme = createMuiTheme({
   palette: {
@@ -27,11 +30,13 @@ const routing = (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <Router>
-        <div>
+        <div className="cotainer-inner">
           <Route exact path="/" component={App} />
           <Route path="/ticket-details" component={TicketDetails} />
           <Route path="/payment-method" component={PaymentMethod} />
           <Route path="/ticket-upload" component={TicketUpload} />
+          <Route path="/confirm-details" component={ConfirmDetails} />
+          <Route path="/payment-receipt" component={Payment} />
         </div>
       </Router>
     </ThemeProvider>

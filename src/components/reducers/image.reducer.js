@@ -3,7 +3,7 @@ const initialState = {
     url: null
 }
 
-const userReducer = (state = initialState, action) => {
+const imageReducer = (state = initialState, action) => {
 
 	switch (action.type){
 		case 'UPLOAD_IMAGE':
@@ -13,4 +13,4 @@ const userReducer = (state = initialState, action) => {
 	}
 };
 
-export default userReducer;
+export default imageReducer;

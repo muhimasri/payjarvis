@@ -1,0 +1,22 @@
+.cantainer-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.cantainer-footer  p {
+    color: rgba(27,53,53,0.4);
+    margin-bottom: 5px;
+}
+
+
+.condition-link a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 1px 10px;
+    border-right: 1px solid;
+    color: rgba(0,170,183,0.702);
+}
+
+.condition-link a:last-child{
+    border-right: none;
+}

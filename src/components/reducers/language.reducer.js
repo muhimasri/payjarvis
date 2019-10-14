@@ -4,7 +4,7 @@ import { find } from "lodash";
 const initialState = {
     language: LANGUAGE.LANGUAGE_DEFAULT,
     all_language: LANGUAGE.LANGUAGE_MENU,
-    language_text: find(LANGUAGE.LANGUAGE_TEXT, {"LANGUAGE": "ENGLISH"}) 
+    language_text: find(LANGUAGE.LANGUAGE_TEXT, {"LANGUAGE": LANGUAGE.LANGUAGE_DEFAULT}) 
 }
 
 const userReducer = (state = initialState, action) => {

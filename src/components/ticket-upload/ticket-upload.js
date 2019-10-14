@@ -19,7 +19,7 @@ class TicketUpload extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-      image: state.image
+     image: state.image
     };
-  }
+  } 
 export default connect(mapStateToProps, null) (withF(TicketUpload));
