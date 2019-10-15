@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { uploadImage } from '../actions/image.action';
 import { updateLanguage } from "../actions/language.action";
 import headerImg from './mobile.png';
+import plusImg from './plus.svg'
 class App extends React.Component {
+  triggerInputFile = () => this.fileInput.click()
   render() {
     const { language_text, history, language, all_language } = this.props;
     return (
@@ -25,7 +27,16 @@ class App extends React.Component {
         <div className="upload--button">
           <h3>{language_text.HOME_COMPONENT.UPLOAD_BUTTON_TEXT}</h3>
           <p>{language_text.HOME_COMPONENT.UPLOAD_BUTTON_LABEL}</p>
-          <React.Fragment><label className="upload--btn">+ <input type="file" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} /></label></React.Fragment>
+          <React.Fragment>
+            {/* <label className="upload--btn">+ 
+            <input type="file" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} />
+            </label> */}
+
+            <label for="image"> 
+            <img className="btn-cursor" src={plusImg} onClick={this.triggerInputFile} />
+            <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} />  
+            </label>
+            </React.Fragment>
         </div>
       </div>
     );
