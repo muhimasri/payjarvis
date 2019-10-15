@@ -1,0 +1,40 @@
+.payment-details ul {
+    list-style: none;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(27, 53, 53, 0.1);
+    margin-top: 20px;
+}
+
+.payment-details ul li {
+    color: #1B3535;
+    font-size: 14px;
+    padding-bottom: 10px;
+    letter-spacing: 0.02em;
+}
+
+.payment-details ul li span {
+    display: inline-block;
+    float: right;
+}
+
+.btn-gray {
+    background-color: #F7F6F5 !important;
+    color: black !important;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.custom-btn {
+    background-color: #00AAB7;
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+}

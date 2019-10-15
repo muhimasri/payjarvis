@@ -14,8 +14,8 @@ class ConfirmTicket extends React.Component{
 
     componentWillMount = () => {
         const { image, history } = this.props;
-        if(!image.file || !image.url)
-            history.push('/')
+        // if(!image.file || !image.url)
+        //     history.push('/')
     }
 
     componentWillReceiveProps = (newProps) => {
@@ -31,7 +31,7 @@ class ConfirmTicket extends React.Component{
         if(detail_data.loading)
             return(<h1>loading</h1>)
         return(
-            <div class="confirm-details">
+            <div class="detail-data">
                 {this.state.display ? <p>1</p> : <p>2</p> }
                 {this.state.display ?
                     <DetailsForm imageUrl={image.url} language_text={language_text} fields={fields} addDetail={(data) => this.props.addDetail(data)}/>

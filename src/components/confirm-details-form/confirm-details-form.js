@@ -13,10 +13,10 @@ class ConfirmDetailForm extends React.Component{
         const { imageUrl, language_text, fields } = this.props;
         return(
         <React.Fragment>
-            <h1>{language_text.CONFIRM_DETAILS_COMPONENT.LABEL}</h1>
-            <h2>{language_text.CONFIRM_DETAILS_COMPONENT.TEXT}</h2>
-            <img src={imageUrl} />
-            <form className="form-details" noValidate autoComplete="off">
+            <h4>{language_text.CONFIRM_DETAILS_COMPONENT.LABEL}</h4>
+            <p>{language_text.CONFIRM_DETAILS_COMPONENT.TEXT}</p>
+            <img src={imageUrl} className="main-img"/>
+            <form className="form-data" noValidate autoComplete="off">
                 <div className="form-field">
                     <label for="DATE_OF_VIOLATION">{fields.DATE_OF_VIOLATION}</label><br/>
                     <input onChange={this.handleChange.bind(this)} type="text" name="DATE_OF_VIOLATION" id="DATE_OF_VIOLATION" />
@@ -34,10 +34,10 @@ class ConfirmDetailForm extends React.Component{
                     <input onChange={this.handleChange.bind(this)} type="text" name="EMAIL" id="EMAIL" />
                     <br/>
                 </div>
+                <div className="sub-btn">
+                    <input type="submit" value="SUBMIT" onClick={()=>this.props.addDetail(this.state)}/>
+                </div>
             </form>
-            <div className="footer">
-                <input type="Button" value="CONTINUE" onClick={()=>this.props.addDetail(this.state)}/>
-            </div>
         </React.Fragment>
         )
     }

@@ -1,0 +1,40 @@
+.form-data {
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+
+.form-data label {
+    color: rgba(27, 53, 53, 0.5);
+    font-size: 14px;
+    text-align: center;
+}
+
+.form-data input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: inline-block;
+    border-radius: 10px !important;
+    border: 1px solid rgba(27, 53, 53, 0.1);
+    box-sizing: border-box;
+}
+
+.sub-btn {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form-data input[type=submit] {
+    width: 60%;
+    background-color: #F94C48;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+}
+
+.form-data input[type=submit]:hover {
+    background-color: #45a049;
+}

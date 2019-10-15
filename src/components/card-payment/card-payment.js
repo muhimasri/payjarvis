@@ -19,7 +19,7 @@ class CardPayment extends React.Component{
             return(<h1>loading</h1>)
         return(
             <React.Fragment>
-                <form className="form-details" noValidate autoComplete="off">
+                <form className="form-data" noValidate autoComplete="off">
                     <div className="form-field">
                         <label for="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="CREDIT_CARD" id="CREDIT_CARD" />
@@ -30,8 +30,10 @@ class CardPayment extends React.Component{
                         <label for="CVC">{card_field.CVC}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="CVC" id="CVC" />
                         <br/>
-                        <input type="Button" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" /><br/>
                     </div>
+                    <div class="sub-btn">
+                    <input type="submit" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" />
+						</div>
                 </form>
         </React.Fragment>
         )

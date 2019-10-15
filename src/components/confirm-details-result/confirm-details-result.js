@@ -23,30 +23,53 @@ class ConfirmDetailResult extends React.Component{
         
         return(
             <React.Fragment>
-                <label for="ADMINISTRATIVE_PENALTY">{payments.ADMINISTRATIVE_PENALTY}</label>
-                &nbsp;&nbsp;&nbsp;AMOUNT
-                <br/>
-                <label for="ADDRESS_SEARCH_FEE">{payments.ADDRESS_SEARCH_FEE}</label>
-                &nbsp;&nbsp;&nbsp;AMOUNT
-                <br/>
-                <label for="LATE_PAYMENT_FEE">{payments.LATE_PAYMENT_FEE}</label>
-                &nbsp;&nbsp;&nbsp;AMOUNT
-                <br/>
-                <label for="SERVICE_CHARGE">{payments.SERVICE_CHARGE}</label>
-                &nbsp;&nbsp;&nbsp;AMOUNT
-                <br/>
-                <label for="TOTAL">{payments.TOTAL}</label>
-                &nbsp;&nbsp;&nbsp;AMOUNT
-                <br/>
-                <input type="Button" value="Pay" /><br/>
-                <input type="Button" onClick={this.showPaymentForm.bind(this)} value="Pay with Card" />
-                <br/>
+                <div class="detail-data payment-title">
+				<h4>Payment</h4>
+
+                <div class="payment-details">
+					<ul>
+						<li>{payments.ADMINISTRATIVE_PENALTY}
+							<span>$50.00</span>
+						</li>
+						<li>{payments.ADDRESS_SEARCH_FEE}
+							<span>$12.00</span>
+						</li>
+						<li>{payments.LATE_PAYMENT_FEE}
+							<span>$25.00</span>
+						</li>
+						<li class="disable-font">{payments.SERVICE_CHARGE}
+							<span>$8.23</span>
+						</li>
+					</ul>
+
+					<ul>
+						<li>test@gmail.com
+							<span>$9.50</span>
+						</li>
+						<li>xxx@gmail.com
+							<span>$80.00</span>
+						</li>
+					</ul>
+
+					<ul class="border-0">
+						<li>{payments.TOTAL}
+							<span>$00.00</span>
+						</li>
+					</ul>
+				</div>
+
+                <div class="">
+					<a href="#" class="custom-btn btn-gray mb-15">Pay</a>
+					<a href="#" class="custom-btn" onClick={this.showPaymentForm.bind(this)}>Pay with Card</a>
+				</div>
+{/*                
                 <input type="checkbox"/>Split Payment
-                <br/>
+                
+                <br/> */}
                 { showCardPayment &&
                     <CardPayment card_field={card_field} language_text={language_text}  {...this.props} />
                 }
-           
+           </div>
                 
                
             </React.Fragment>
