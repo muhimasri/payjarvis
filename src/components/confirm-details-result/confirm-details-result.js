@@ -11,7 +11,7 @@ class ConfirmDetailResult extends React.Component{
     
     showPaymentForm = () => {
         this.setState({
-            showCardPayment:true
+            showCardPayment:!this.state.showCardPayment
         })
     }
 
@@ -58,9 +58,9 @@ class ConfirmDetailResult extends React.Component{
 					</ul>
 				</div>
 
-                <div className="">
+                <div className="btn-pay">
 					<a href="#" className="custom-btn btn-gray mb-15">Pay</a>
-					<a href="#" className="custom-btn" onClick={this.showPaymentForm.bind(this)}>Pay with Card</a>
+					<a href="#" className={showCardPayment ? "custom-btn" : "custom-btn btn-gray"} onClick={this.showPaymentForm.bind(this)}>Pay with Card</a>
 				</div>
 {/*                
                 <input type="checkbox"/>Split Payment
