@@ -3,13 +3,17 @@ import React from 'react'
 import withF from '../HOC/withF'
 import { connect } from 'react-redux';
 import { uploadImage } from '../actions/image.action';
+import { uploadTicket } from '../actions/image.action';
 import { updateLanguage } from "../actions/language.action";
 import headerImg from './mobile.png';
 import plusImg from './plus.svg'
+import { stat } from 'fs';
+import Loading from '../loader';
+
 class App extends React.Component {
   triggerInputFile = () => this.fileInput.click()
   render() {
-    const { language_text, history, language, all_language } = this.props;
+    const { language_text, history, language, all_language,image } = this.props;
     return (
       <div className="Header-section">
         <select className="upload-dropdown" value={language} onChange={(e) => this.props.updateLanguage(e.target.value)}>
@@ -34,10 +38,12 @@ class App extends React.Component {
 
             <label for="image"> 
             <img className="btn-cursor" src={plusImg} onClick={this.triggerInputFile} />
-            <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} />  
+            {/* <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} /> */}
+            <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadTicket(e.target.files, history)} />  
             </label>
             </React.Fragment>
         </div>
+        {image.loading && <Loading/>}
       </div>
     );
   }
@@ -46,7 +52,8 @@ function mapStateToProps(state) {
   return {
       language: state.language.language,
       all_language: state.language.all_language,
-      language_text: state.language.language_text
+      language_text: state.language.language_text,
+      image: state.image
   };
 }
-export default connect(mapStateToProps, {uploadImage, updateLanguage}) (withF(App))
+export default connect(mapStateToProps, {uploadTicket, updateLanguage}) (withF(App))
