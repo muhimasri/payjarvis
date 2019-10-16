@@ -11,14 +11,14 @@ class Payment extends React.Component{
 
         return(
             <React.Fragment>
-                 <label for="VIOLATION_NOTICE">{paymentText.VIOLATION_NOTICE}</label><br/>
-                 <label for="PAYMENT_AMOUNT">{paymentText.PAYMENT_AMOUNT}</label><br/>
-                 <label for="PAYMENT_MADE">{paymentText.PAYMENT_MADE}</label><br/>
-                 <label for="WAITING_FOR">{paymentText.WAITING_FOR}</label><br/>
-                 <label for="PAYMENT_DATE">{paymentText.PAYMENT_DATE}</label><br/>
-                 <label for="REFERENCE_NO">{paymentText.REFERENCE_NO}</label><br/>
-                 <label for="SEND_RECECIPT">{paymentText.SEND_RECECIPT}</label><br/>
-                 <label for="EMAIL">{paymentText.EMAIL}</label><br/>
+                 <label htmlFor="VIOLATION_NOTICE">{paymentText.VIOLATION_NOTICE}</label><br/>
+                 <label htmlFor="PAYMENT_AMOUNT">{paymentText.PAYMENT_AMOUNT}</label><br/>
+                 <label htmlFor="PAYMENT_MADE">{paymentText.PAYMENT_MADE}</label><br/>
+                 <label htmlFor="WAITING_FOR">{paymentText.WAITING_FOR}</label><br/>
+                 <label htmlFor="PAYMENT_DATE">{paymentText.PAYMENT_DATE}</label><br/>
+                 <label htmlFor="REFERENCE_NO">{paymentText.REFERENCE_NO}</label><br/>
+                 <label htmlFor="SEND_RECECIPT">{paymentText.SEND_RECECIPT}</label><br/>
+                 <label htmlFor="EMAIL">{paymentText.EMAIL}</label><br/>
                  <input  type="text" name="EMAIL" id="EMAIL" /><br/> 
                  <input  type="text" name="EMAIL" id="EMAIL" /><br/> 
                  <input type="Button" value={paymentText.SEND_BUTTON}/>

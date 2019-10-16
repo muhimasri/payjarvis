@@ -14,25 +14,24 @@ class CardPayment extends React.Component{
     render(){
 
         const { card_field, language_text, payment, history } = this.props;
-        console.log('this is componenet state data by payment :->', payment)
         if(payment.loading)
             return(<h1>loading</h1>)
         return(
             <React.Fragment>
                 <form className="form-data" noValidate autoComplete="off">
                     <div className="form-field">
-                        <label for="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/>
+                        <label htmlFor="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="CREDIT_CARD" id="CREDIT_CARD" />
                         <br/>
-                        <label for="EXPIRY_DATE">{card_field.EXPIRY_DATE}</label><br/>
+                        <label htmlFor="EXPIRY_DATE">{card_field.EXPIRY_DATE}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="EXPIRY_DATE" id="EXPIRY_DATE" />
                         <br/>
-                        <label for="CVC">{card_field.CVC}</label><br/>
+                        <label htmlFor="CVC">{card_field.CVC}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="CVC" id="CVC" />
                         <br/>
                     </div>
-                    <div class="sub-btn">
-                    <input type="submit" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" />
+                    <div className="sub-btn">
+                    <input type="button" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" />
 						</div>
                 </form>
         </React.Fragment>

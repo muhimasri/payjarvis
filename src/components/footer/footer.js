@@ -8,7 +8,7 @@ class Footer extends React.Component {
         return (
           <div className="cantainer-footer">
               <p>{language_text.FOOTER_TEXT}</p>
-              <div class="condition-link">
+              <div className="condition-link">
                   {language_text.FOOTER_LINKS.map((o, i) => (
                       <a href="#" key={i}>{o}</a>
                   ))}

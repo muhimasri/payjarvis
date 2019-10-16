@@ -1,5 +1,5 @@
 export const addDetail = data => (dispatch) => {
-    console.log('this is data', data)
+    console.log('this is data by action', data)
     //this dispatch will use when api call starts
     dispatch({
         type: 'ADD_DETAIL'

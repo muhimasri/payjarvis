@@ -4,6 +4,7 @@ import withF from '../HOC/withF';
 import {addDetail} from '../actions/detail.action';
 import DetailsForm from '../confirm-details-form';
 import DetailsResult from '../confirm-details-result';
+import Loading from '../loader';
 import { connect } from 'react-redux';
 
 class ConfirmTicket extends React.Component{
@@ -27,17 +28,16 @@ class ConfirmTicket extends React.Component{
         const { language_text, image, detail_data} = this.props;
         const fields = language_text.CONFIRM_DETAILS_COMPONENT.FIELDS
         const payments = language_text.CONFIRM_DETAILS_COMPONENT.PAYMENTS
-
-        if(detail_data.loading)
-            return(<h1>loading</h1>)
+        console.log('This is APIs response for uploaded image', image)
         return(
-            <div class="detail-data">
+            <div className="detail-data">
                 {this.state.display ? <p>1</p> : <p>2</p> }
                 {this.state.display ?
                     <DetailsForm imageUrl={image.response_success && image.response_success.imageUrl} language_text={language_text} fields={fields} addDetail={(data) => this.props.addDetail(data)}/>
                  : 
                     <DetailsResult payments={payments} {...this.props}/>
                 }
+                {detail_data.loading && <Loading />}
             </div>
         )
     }

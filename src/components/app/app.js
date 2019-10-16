@@ -22,7 +22,7 @@ class App extends React.Component {
             ))}
         </select>
         <img src={headerImg} className="main-img"/>
-        <div class="Header-content">
+        <div className="Header-content">
           <h2>{language_text.TEXT1} <br /> <strong>{language_text.TEXT2}</strong></h2>
           <h4>{language_text.HOME_COMPONENT.TEXT}</h4>
           <p>{language_text.HOME_COMPONENT.LABEL}</p>
