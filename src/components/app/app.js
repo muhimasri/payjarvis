@@ -36,7 +36,7 @@ class App extends React.Component {
             <input type="file" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} />
             </label> */}
 
-            <label for="image"> 
+            <label htmlFor="image"> 
             <img className="btn-cursor" src={plusImg} onClick={this.triggerInputFile} />
             {/* <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} /> */}
             <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadTicket(e.target.files, history)} />  
