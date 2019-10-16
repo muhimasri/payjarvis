@@ -1,8 +1,21 @@
 import './confirm-details-form.scss';
+import ModalImage from "react-modal-image";
 import React from 'react';
 
 class ConfirmDetailForm extends React.Component{
 
+    constructor(props) {
+        super();
+     
+        this.state = {
+          isFull: true,
+        };
+      }
+    
+    goFull = () => {
+    this.setState({ isFull: true });
+    }
+    
     handleChange(event){
         this.setState({
             [event.target.name]:event.target.value
@@ -15,7 +28,11 @@ class ConfirmDetailForm extends React.Component{
         <React.Fragment>
             <h4>{language_text.CONFIRM_DETAILS_COMPONENT.LABEL}</h4>
             <p>{language_text.CONFIRM_DETAILS_COMPONENT.TEXT}</p>
-            <img src={imageUrl} className="main-img"/>
+            <ModalImage
+            small={imageUrl}
+            large={imageUrl}
+            />
+            {/* <img src={imageUrl} className="main-img"/> */}
             <form className="form-data" noValidate autoComplete="off">
                 <div className="form-field">
                     <label for="DATE_OF_VIOLATION">{fields.DATE_OF_VIOLATION}</label><br/>
