@@ -10,7 +10,7 @@ body{
 .cotainer-inner {
   width: 100%;
   margin: 15px auto;
-  max-width: 350px;
+  max-width: 310px;
   box-shadow: 0px 0px 6px -4px #000;
   padding: 15px;
 }

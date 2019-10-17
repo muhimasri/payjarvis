@@ -1,0 +1,57 @@
+.cotainer-inner img.header-img {
+    width: 223px;
+    height: 201px;
+    display: block;
+    margin: 0 auto;
+}
+
+.detail-data h4 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.receipt-container {
+    border: 2px solid #FFF;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 6px -4px #000;
+}
+
+.receipt-container h3 {
+    margin: 10px 0px;
+    font-size: 25px;
+    text-align: center;
+    color: #00AAB7;
+    font-weight: 400;
+}
+
+.receipt-container ul {
+    list-style: none;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(27, 53, 53, 0.1);
+    margin-top: 30px;
+}
+
+.receipt-container ul li {
+    color: #1B3535;
+    font-size: 14px;
+    padding-bottom: 10px;
+    letter-spacing: 0.02em;
+    color: rgba(27, 53, 53, 0.4) !important;
+}
+
+.receipt-container ul li span {
+    display: inline-block;
+    float: right;
+    color: #000;
+}
+
+.receipt-container .enable-font {
+    color: #1B3535 !important;
+}
+
+.border-0{
+    border: 0 !important;
+}

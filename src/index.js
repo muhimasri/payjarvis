@@ -9,6 +9,7 @@ import PaymentMethod from './components/payment-method';
 import TicketUpload from './components/ticket-upload';
 import ConfirmDetails from './components/confirm-details';
 import Payment from './components/payment-receipt';
+import Paid from './components/paid-receipt';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 //THIS IS REDUX IMPORT
@@ -37,6 +38,7 @@ const routing = (
           <Route path="/ticket-upload" component={TicketUpload} />
           <Route path="/confirm-details" component={ConfirmDetails} />
           <Route path="/payment-receipt" component={Payment} />
+          <Route path="/paid-receipt" component={Paid} />
         </div>
       </Router>
     </ThemeProvider>

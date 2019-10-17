@@ -2,6 +2,9 @@ import './confirm-details-result.scss';
 import React from 'react';
 import CardPayment from '../card-payment'
 import { connect } from 'react-redux';
+import Utils from '../../services/utils';
+import Apple from './apple-pay.svg';
+import Gpay from './googlepay.svg';
 
 class ConfirmDetailResult extends React.Component{ 
 
@@ -16,12 +19,22 @@ class ConfirmDetailResult extends React.Component{
     }
 
     render(){
+
+		var moduleCode = Utils.getDeviceOperatingSystem();
+
         const { payments,language_text } = this.props;
         const { showCardPayment } = this.state;
 
         const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
-        
-        return(
+		let imgText;
+		if(moduleCode == 'ios')
+			imgText = <img src={Apple}/>
+		else if (moduleCode == 'android')
+			imgText =<img src={Gpay}/>
+		else 
+			imgText = 'Pay'
+
+		return(
             <React.Fragment>
                 <div className="detail-data payment-title">
 				<h4>Payment</h4>
@@ -59,13 +72,17 @@ class ConfirmDetailResult extends React.Component{
 				</div>
 
                 <div className="btn-pay">
-					<a href="#" className="custom-btn btn-gray mb-15">Pay</a>
+					<a href="#" className="custom-btn btn-gray mb-15">{imgText}</a>
 					<a href="#" className={showCardPayment ? "custom-btn" : "custom-btn btn-gray"} onClick={this.showPaymentForm.bind(this)}>Pay with Card</a>
 				</div>
-{/*                
-                <input type="checkbox"/>Split Payment
+				               
+                <div class="cust-check">
+					<label class="container">Split Payment
+						<input type="checkbox" checked="checked"/>
+						<span class="checkmark"></span>
+					</label>
+                </div>
                 
-                <br/> */}
                 { showCardPayment &&
                     <CardPayment card_field={card_field} language_text={language_text}  {...this.props} />
                 }
