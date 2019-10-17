@@ -78,7 +78,7 @@ class ConfirmDetailResult extends React.Component{
 				               
                 <div class="cust-check">
 					<label class="container">Split Payment
-						<input type="checkbox" checked="checked"/>
+						<input type="checkbox"/>
 						<span class="checkmark"></span>
 					</label>
                 </div>
