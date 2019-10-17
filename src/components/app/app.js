@@ -2,12 +2,10 @@ import './app.scss';
 import React from 'react'
 import withF from '../HOC/withF'
 import { connect } from 'react-redux';
-import { uploadImage } from '../actions/image.action';
 import { uploadTicket } from '../actions/image.action';
 import { updateLanguage } from "../actions/language.action";
 import headerImg from './mobile.png';
 import plusImg from './plus.svg'
-import { stat } from 'fs';
 import Loading from '../loader';
 
 class App extends React.Component {

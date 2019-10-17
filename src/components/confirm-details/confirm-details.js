@@ -15,8 +15,8 @@ class ConfirmTicket extends React.Component{
 
     componentWillMount = () => {
         const { image, history } = this.props;
-        // if(!image.response_success || !image.response_success.imageUrl)
-        //     history.push('/')
+        if(!image.response_success || !image.response_success.imageUrl)
+            history.push('/')
     }
 
     componentWillReceiveProps = (newProps) => {
