@@ -33,7 +33,7 @@ class ConfirmTicket extends React.Component{
             <div className="detail-data">
                 {this.state.display ? <p>1</p> : <p>2</p> }
                 {this.state.display ?
-                    <DetailsForm imageUrl={image.response_success && image.response_success.imageUrl} language_text={language_text} fields={fields} addDetail={(data) => this.props.addDetail(data)}/>
+                    <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} addDetail={(data) => this.props.addDetail(data)}/>
                  : 
                     <DetailsResult payments={payments} {...this.props}/>
                 }
