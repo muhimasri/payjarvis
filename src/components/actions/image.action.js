@@ -10,14 +10,15 @@ export const uploadTicket = (file,history) => dispatch => {
       })
     const url = 'http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/api/tickets';
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', file[0]);
     axios.post(url, formData)
-      .then(function (response) {
+      .then(function (response) {        
         dispatch( {
             type: 'UPLOAD_IMAGE_SUCCESS',
             payload:response.data.data
           })
-          history.push('/confirm-details')
+          console.log("Response ---> ",response.data.data.ticketId);
+          history.push(`/confirm-details/${response.data.data.ticketId}`)
       })
       .catch(function (error) {
         dispatch( {

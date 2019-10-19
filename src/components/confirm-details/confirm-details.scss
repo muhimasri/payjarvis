@@ -7,12 +7,47 @@
 
 .detail-data p {
     color: rgba(27, 53, 53, 0.4);
-    padding: 0 40px;
+    padding: 0 20px;
     font-size: 14px;
     text-align: center;
     line-height: 20px;
 }
 
-// .cotainer-inner img.main-img {
-//     width: 100%;
-// }
+.detail-data .steps--main, .detail-data .title-des {
+    max-width: 270px;
+    margin: 0 auto;
+}
+
+.steps--main {
+    display: flex;
+    width: 100%;
+        margin-bottom: 15px !important;
+}
+
+.steps--main span {
+    display: block;
+    width: 50%;
+    border-bottom: 3px solid #ace5e5;
+    padding: 15px 0;
+    color: #999;
+}
+
+.steps--main.step-two span.step--right {
+    color: #00aab7;
+    border-color: #00aab7;
+}
+
+span.step--left {
+    text-align: right;
+}
+span.step--right {
+    text-align: left;
+}
+
+.steps--main .active {
+    font-weight: 600;
+    color: #00aab7;
+    font-size: 24px;
+    line-height: 16px;
+    border-bottom-color: #00aab7;
+}

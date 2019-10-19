@@ -36,7 +36,7 @@ const routing = (
           <Route path="/ticket-details" component={TicketDetails} />
           <Route path="/payment-method" component={PaymentMethod} />
           <Route path="/ticket-upload" component={TicketUpload} />
-          <Route path="/confirm-details" component={ConfirmDetails} />
+          <Route path="/confirm-details/:id" component={ConfirmDetails} />
           <Route path="/payment-receipt" component={Payment} />
           <Route path="/paid-receipt" component={Paid} />
         </div>

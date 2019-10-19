@@ -14,9 +14,10 @@ class ConfirmTicket extends React.Component{
     }
 
     componentWillMount = () => {
-        const { image, history } = this.props;
-        if(!image.response_success || !image.response_success.imageUrl)
-            history.push('/')
+        const { image, history, match } = this.props;
+        console.log("GG match", match);
+        // if(!image.response_success || !image.response_success.imageUrl)
+        //     history.push('/')
     }
 
     componentWillReceiveProps = (newProps) => {
@@ -31,7 +32,7 @@ class ConfirmTicket extends React.Component{
         console.log('This is APIs response for uploaded image', image)
         return(
             <div className="detail-data">
-                {this.state.display ? <p>1</p> : <p>2</p> }
+                {this.state.display ? <div class="steps--main step-one"><span class="step--left active">01</span><span class="step--right">/2</span></div> : <div class="steps--main step-two"><span class="step--left active">02</span><span class="step--right">/2</span></div>  }
                 {this.state.display ?
                     <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} addDetail={(data) => this.props.addDetail(data)}/>
                  : 

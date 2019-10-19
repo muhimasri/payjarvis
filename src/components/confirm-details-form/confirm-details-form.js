@@ -18,10 +18,10 @@ class ConfirmDetailForm extends React.Component{
         if(!response)
           return;
         this.setState({
-            DATE_OF_VIOLATION: response.dateOfViolation,
-            VIOLATION_NOTICE: response.violationNoticeNumber,
-            PLATE_NUMBER: response.plateNumber,
-            PENALTY_AMOUNT: response.administrativePenaltyAmount
+            DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
+            VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
+            PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
+            PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
         })
     }
 
@@ -54,12 +54,14 @@ class ConfirmDetailForm extends React.Component{
         const { DATE_OF_VIOLATION, VIOLATION_NOTICE, PLATE_NUMBER, PENALTY_AMOUNT, error } = this.state;
         return(
         <React.Fragment>
-            <h4>{language_text.CONFIRM_DETAILS_COMPONENT.LABEL}</h4>
-            <p>{language_text.CONFIRM_DETAILS_COMPONENT.TEXT}</p>
-            <ModalImage
-                small={response && response.imageUrl}
-                large={response && response.imageUrl}
-            />
+            <div class="title-des">
+                <h4>{language_text.CONFIRM_DETAILS_COMPONENT.LABEL}</h4>
+                <p>{language_text.CONFIRM_DETAILS_COMPONENT.TEXT}</p>
+                <ModalImage className="main-img"
+                    small={response && response.imageUrl}
+                    large={response && response.imageUrl}
+                />
+            </div>
             {/* <img src={imageUrl} className="main-img"/> */}
             <form className="form-data" noValidate autoComplete="off">
                 <div className="form-field">

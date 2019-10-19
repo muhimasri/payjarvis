@@ -40,6 +40,7 @@ class ConfirmDetailResult extends React.Component{
 				<h4>Payment</h4>
 
                 <div className="payment-details">
+					
 					<ul>
 						<li>{payments.ADMINISTRATIVE_PENALTY}
 							<span>$50.00</span>
@@ -69,6 +70,7 @@ class ConfirmDetailResult extends React.Component{
 							<span>$00.00</span>
 						</li>
 					</ul>
+					
 				</div>
 
                 <div className="btn-pay">
@@ -76,12 +78,12 @@ class ConfirmDetailResult extends React.Component{
 					<a href="#" className={showCardPayment ? "custom-btn" : "custom-btn btn-gray"} onClick={this.showPaymentForm.bind(this)}>Pay with Card</a>
 				</div>
 				               
-                <div class="cust-check">
+                {/* <div class="cust-check">
 					<label class="container">Split Payment
 						<input type="checkbox" checked="checked"/>
 						<span class="checkmark"></span>
 					</label>
-                </div>
+                </div> */}
                 
                 { showCardPayment &&
                     <CardPayment card_field={card_field} language_text={language_text}  {...this.props} />

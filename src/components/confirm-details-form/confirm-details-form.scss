@@ -35,10 +35,18 @@
     cursor: pointer;
 }
 
-.form-data input[type=button]:hover {
-    background-color: #45a049;
-}
+// .form-data input[type=button]:hover {
+//     background-color: #45a049;
+// }
 
 .error-field {
     border-color: red !important;
+}
+
+.title-des p {
+    margin-bottom: 15px;
+}
+
+.title-des {
+    text-align: center;
 }
