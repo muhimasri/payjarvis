@@ -2,6 +2,7 @@ import './confirm-details.scss';
 import React from 'react'
 import withF from '../HOC/withF';
 import {addDetail} from '../actions/detail.action';
+import {getImageDataById} from '../actions/image.action';
 import DetailsForm from '../confirm-details-form';
 import DetailsResult from '../confirm-details-result';
 import Loading from '../loader';
@@ -14,10 +15,10 @@ class ConfirmTicket extends React.Component{
     }
 
     componentWillMount = () => {
-        const { image, history } = this.props;
-        
-        // if(!image.response_success || !image.response_success.imageUrl)
-        //     history.push('/')
+        const { image, history, match } = this.props;
+        if(!match.params.id)
+            history.push('/')
+        this.props.getImageDataById(match.params.id);
     }
 
     componentWillReceiveProps = (newProps) => {
@@ -34,11 +35,11 @@ class ConfirmTicket extends React.Component{
             <div className="detail-data">
                 {this.state.display ? <div class="steps--main step-one"><span class="step--left active">01</span><span class="step--right">/2</span></div> : <div class="steps--main step-two"><span class="step--left active">02</span><span class="step--right">/2</span></div>  }
                 {this.state.display ?
-                    <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} id={match.params.id} />
+                    <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} id={match.params.id} addDetail={(data) => this.props.addDetail(data)}/>
                  : 
                     <DetailsResult payments={payments} {...this.props}/>
                 }
-                {detail_data.loading && <Loading />}
+                {(detail_data.loading || image.loading) && <Loading />}
             </div>
         )
     }
@@ -51,4 +52,4 @@ function mapStateToProps(state) {
      detail_data: state.detail
     };
   } 
-export default connect(mapStateToProps, {addDetail}) (withF(ConfirmTicket));
+export default connect(mapStateToProps, {addDetail, getImageDataById }) (withF(ConfirmTicket));

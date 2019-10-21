@@ -13,17 +13,16 @@ class ConfirmDetailForm extends React.Component{
         error: []
     }
 
-    componentWillMount = () => {
-        const { response, id } = this.props;
-        console.log('Match Get',id);
-        if(!response)
-          return;
-        this.setState({
-            DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
-            VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
-            PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
-            PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
-        })
+    componentWillReceiveProps = (newProps) => {
+        const { response } = newProps;
+        if(newProps.response){
+            this.setState({
+                DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
+                VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
+                PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
+                PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
+            })
+        }
     }
 
     handleChange(event){
@@ -47,7 +46,6 @@ class ConfirmDetailForm extends React.Component{
             error.push('EMAIL')
         this.setState({ error });
         if(error.length > 0) return;
-        console.log('arkadata:', this.props)
         this.props.addDetail({id: this.props.id, ...this.state})
     }
 
@@ -71,8 +69,7 @@ class ConfirmDetailForm extends React.Component{
                     <input className={error.includes('DATE_OF_VIOLATION') && 'error-field'} onChange={this.handleChange.bind(this)} value={DATE_OF_VIOLATION} type="text" name="DATE_OF_VIOLATION" id="DATE_OF_VIOLATION" />
                     <br/>
                     <div class="error-message">
-                        Date of violation is more than 60 days past due. A payment will have to be made at a 
-                        <span class="text-blue">Service Ontario location.</span>
+                        Date of violation is more than 60 days past due. A payment will have to be made at a <span class="text-blue">Service Ontario location.</span>
 					</div>
                     <label htmlFor="VIOLATION_NOTICE">{fields.VIOLATION_NOTICE}</label><br/>
                     <input className={error.includes('VIOLATION_NOTICE') && 'error-field'} onChange={this.handleChange.bind(this)} value={VIOLATION_NOTICE} type="text" name="VIOLATION_NOTICE" id="VIOLATION_NOTICE" />
