@@ -13,16 +13,16 @@ class ConfirmDetailForm extends React.Component{
         error: []
     }
 
-    componentWillMount = () => {
-        const { response } = this.props;
-        if(!response)
-          return;
-        this.setState({
-            DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
-            VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
-            PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
-            PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
-        })
+    componentWillReceiveProps = (newProps) => {
+        const { response } = newProps;
+        if(newProps.response){
+            this.setState({
+                DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
+                VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
+                PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
+                PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
+            })
+        }
     }
 
     handleChange(event){

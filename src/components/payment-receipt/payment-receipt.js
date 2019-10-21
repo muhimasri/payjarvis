@@ -48,7 +48,7 @@ class Payment extends React.Component{
                             <h3>Send me a reciept</h3>
                             <p>Validate the details below  based on the  parking  violation Notice.</p>
                             <div class="form-group">
-                                <label for="lname">{paymentText.EMAIL}</label>
+                                <label htmlFor="lname">{paymentText.EMAIL}</label>
                                 <input type="text" id="lname" name="lastname" placeholder="Email"/>
                             </div>
                             <div class="sub-btn">
@@ -56,18 +56,6 @@ class Payment extends React.Component{
                             </div>
                         </div>				
 			    </div>
-                 
-                 {/* <label htmlFor="VIOLATION_NOTICE">{paymentText.VIOLATION_NOTICE}</label><br/>
-                 <label htmlFor="PAYMENT_AMOUNT">{paymentText.PAYMENT_AMOUNT}</label><br/>
-                 <label htmlFor="PAYMENT_MADE">{paymentText.PAYMENT_MADE}</label><br/>
-                 <label htmlFor="WAITING_FOR">{paymentText.WAITING_FOR}</label><br/>
-                 <label htmlFor="PAYMENT_DATE">{paymentText.PAYMENT_DATE}</label><br/>
-                 <label htmlFor="REFERENCE_NO">{paymentText.REFERENCE_NO}</label><br/>
-                 <label htmlFor="SEND_RECECIPT">{paymentText.SEND_RECECIPT}</label><br/>
-                 <label htmlFor="EMAIL">{paymentText.EMAIL}</label><br/>
-                 <input  type="text" name="EMAIL" id="EMAIL" /><br/> 
-                 <input  type="text" name="EMAIL" id="EMAIL" /><br/> 
-                 <input type="Button" value={paymentText.SEND_BUTTON}/> */}
             </React.Fragment>
         )
     }
