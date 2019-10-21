@@ -1,6 +1,7 @@
 import './card-payment.scss';
 import { connect } from 'react-redux';
 import { sendPayment } from '../actions/payment.action';
+import Loading from '../loader'
 import React from 'react';
 
 class CardPayment extends React.Component{
@@ -14,8 +15,6 @@ class CardPayment extends React.Component{
     render(){
 
         const { card_field, language_text, payment, history } = this.props;
-        if(payment.loading)
-            return(<h1>loading</h1>)
         return(
             <React.Fragment>
                 <form className="form-data" noValidate autoComplete="off">
@@ -34,6 +33,7 @@ class CardPayment extends React.Component{
                     <input type="button" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" />
 						</div>
                 </form>
+                {payment.loading && <Loading/>}
         </React.Fragment>
         )
     }
