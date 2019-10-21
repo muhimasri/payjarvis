@@ -27,7 +27,7 @@ class ConfirmTicket extends React.Component{
     }
 
     render(){
-        const { language_text, image, detail_data} = this.props;
+        const { language_text, image, detail_data, match } = this.props;
         console.log('this is incoming response by high level :->', detail_data)
         const fields = language_text.CONFIRM_DETAILS_COMPONENT.FIELDS
         const payments = language_text.CONFIRM_DETAILS_COMPONENT.PAYMENTS
@@ -35,7 +35,7 @@ class ConfirmTicket extends React.Component{
             <div className="detail-data">
                 {this.state.display ? <div class="steps--main step-one"><span class="step--left active">01</span><span class="step--right">/2</span></div> : <div class="steps--main step-two"><span class="step--left active">02</span><span class="step--right">/2</span></div>  }
                 {this.state.display ?
-                    <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} addDetail={(data) => this.props.addDetail(data)}/>
+                    <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} id={match.params.id} addDetail={(data) => this.props.addDetail(data)}/>
                  : 
                     <DetailsResult payments={payments} {...this.props}/>
                 }

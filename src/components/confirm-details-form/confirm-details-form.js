@@ -46,7 +46,8 @@ class ConfirmDetailForm extends React.Component{
             error.push('EMAIL')
         this.setState({ error });
         if(error.length > 0) return;
-        this.props.addDetail(this.state)
+        console.log('arkadata:', this.props)
+        this.props.addDetail({id: this.props.id, ...this.state})
     }
 
     render(){
