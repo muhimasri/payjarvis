@@ -14,7 +14,8 @@ class ConfirmDetailForm extends React.Component{
     }
 
     componentWillMount = () => {
-        const { response } = this.props;
+        const { response, id } = this.props;
+        console.log('Match Get',id);
         if(!response)
           return;
         this.setState({
