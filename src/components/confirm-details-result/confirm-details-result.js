@@ -22,9 +22,14 @@ class ConfirmDetailResult extends React.Component{
 
 		var moduleCode = Utils.getDeviceOperatingSystem();
 
-        const { payments,language_text } = this.props;
-        const { showCardPayment } = this.state;
+		const { payments, language_text, detail_data } = this.props;
 
+		const { showCardPayment } = this.state;
+
+		console.log("Detail Response ---------->", detail_data.response_success);
+
+		const details= detail_data.response_success;
+		
         const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
 		let imgText;
 		if(moduleCode == 'ios')
@@ -43,7 +48,7 @@ class ConfirmDetailResult extends React.Component{
 					
 					<ul>
 						<li>{payments.ADMINISTRATIVE_PENALTY}
-							<span>$50.00</span>
+							<span>${details.administrativePenaltyAmount}</span>
 						</li>
 						<li>{payments.ADDRESS_SEARCH_FEE}
 							<span>$12.00</span>
@@ -75,13 +80,13 @@ class ConfirmDetailResult extends React.Component{
 
                 <div className="btn-pay">
 					<a href="#" className="custom-btn btn-gray mb-15">{imgText}</a>
-					<a href="#" className={showCardPayment ? "custom-btn" : "custom-btn btn-gray"} onClick={this.showPaymentForm.bind(this)}>Pay with Card</a>
+					<a href="#" className={showCardPayment ? "custom-btn" : "custom-btn btn-gray"} onClick={this.showPaymentForm.bind(this)}>{payments.PAY_WITH_CARD}</a>
 				</div>
 				               
-                {/* <div class="cust-check">
-					<label class="container">Split Payment
+                {/* <div className="cust-check">
+					<label className="container">Split Payment
 						<input type="checkbox"/>
-						<span class="checkmark"></span>
+						<span className="checkmark"></span>
 					</label>
                 </div> */}
                 
@@ -96,9 +101,4 @@ class ConfirmDetailResult extends React.Component{
     }
 }
 
-function mapStateToProps(state) {
-    return {
-     language_text: state.language.language_text,
-    };
-  } 
-export default connect(mapStateToProps) (ConfirmDetailResult);
+export default ConfirmDetailResult;

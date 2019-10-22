@@ -14,7 +14,7 @@ class CardPayment extends React.Component{
 
     render(){
 
-        const { card_field, language_text, payment, history } = this.props;
+        const { card_field, payment, history } = this.props;
         return(
             <React.Fragment>
                 <form className="form-data" noValidate autoComplete="off">
@@ -30,7 +30,7 @@ class CardPayment extends React.Component{
                         <br/>
                     </div>
                     <div className="sub-btn">
-                    <input type="button" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" />
+                    <input type="button" onClick={() => {this.props.sendPayment(this.state, history)}} value={card_field.PAY} />
 						</div>
                 </form>
                 {payment.loading && <Loading/>}
