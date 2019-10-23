@@ -21,26 +21,26 @@ class Payment extends React.Component{
                             <li> <span className="disable-font">{paymentText.VIOLATION_NOTICE}</span>
                                 <span>PB465465</span>
                             </li>
-                            <li> <span className="disable-font"> Payment Amount </span>
-                                <span>$12.00</span>
+                            <li> <span className="disable-font">{paymentText.PAYMENT_AMOUNT}</span>
+                                <span>$89.50</span>
                             </li>
                         </ul>
                     </div>
                     <div className="payment-details">
-                        <ul>
+                        {/* <ul>
                             <li className="green-font"> <span > Payment made <strong>Test@gmail.com</strong> </span>
                                 <span>$50.00</span>
                             </li>
                             <li className="yellow-font"> <span > Waiting for <strong>xxx@gmail.com</strong> </span>
                                 <span>$12.00</span>
                             </li>	
-                        </ul>
+                        </ul> */}
                         <ul>
-                            <li> <span className="disable-font">test@gmail.com</span> 
-                                <span>$9.50</span>
+                            <li> <span className="disable-font">{paymentText.PAYMENT_DATE}</span> 
+                                <span>13 September 2019</span>
                             </li>
-                            <li> <span className="disable-font"> xxx@gmail.com</span>
-                                <span>$80.00</span>
+                            <li> <span className="disable-font">{paymentText.REFERENCE_NO}</span>
+                                <span>919823489</span>
                             </li>
                         </ul>
                     </div>

@@ -76,7 +76,7 @@ export const LANGUAGE = {
                     "LATE_PAYMENT_FEE":"Frais de retard de paiement",
                     "SERVICE_CHARGE":"Frais de service",
                     "TOTAL":"Totale",
-                    "PAY_WTIH_CARD":"Payer avec la carte"
+                    "PAY_WITH_CARD":"Payer avec la carte"
                 },
                 "CARD_FIELDS":{
                     "CREDIT_CARD":"Carte de crédit",

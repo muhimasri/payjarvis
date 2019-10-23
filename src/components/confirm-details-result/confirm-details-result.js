@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Utils from '../../services/utils';
 import Apple from './apple-pay.svg';
 import Gpay from './googlepay.svg';
+import Info from './info.png';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class ConfirmDetailResult extends React.Component{ 
 
@@ -26,8 +28,6 @@ class ConfirmDetailResult extends React.Component{
 
 		const { showCardPayment } = this.state;
 
-		console.log("Detail Response ---------->", detail_data.response_success);
-
 		const details= detail_data.response_success;
 		
         const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
@@ -43,35 +43,46 @@ class ConfirmDetailResult extends React.Component{
             <React.Fragment>
                 <div className="detail-data payment-title">
 				<h4>Payment</h4>
-
                 <div className="payment-details">
-					
 					<ul>
 						<li>{payments.ADMINISTRATIVE_PENALTY}
+							<Tooltip title={payments.ADMINISTRATIVE_PENALTY}>
+								<img src={Info}/>
+     					 	</Tooltip>
 							<span>${details.administrativePenaltyAmount}</span>
 						</li>
 						<li>{payments.ADDRESS_SEARCH_FEE}
+							<Tooltip title={payments.ADDRESS_SEARCH_FEE}>
+								<img src={Info}/>
+							</Tooltip>
 							<span>$12.00</span>
 						</li>
 						<li>{payments.LATE_PAYMENT_FEE}
+							<Tooltip title={payments.LATE_PAYMENT_FEE}>
+								<img src={Info}/>
+     					 	</Tooltip>
 							<span>$25.00</span>
 						</li>
 						<li className="disable-font">{payments.SERVICE_CHARGE}
+							<Tooltip title={payments.SERVICE_CHARGE}>
+								<img src={Info}/>
+     					 	</Tooltip>
 							<span>$8.23</span>
 						</li>
 					</ul>
 
-					<ul>
+					{/* <ul>
 						<li>test@gmail.com
 							<span>$9.50</span>
 						</li>
 						<li>xxx@gmail.com
 							<span>$80.00</span>
 						</li>
-					</ul>
+					</ul> */}
 
 					<ul className="border-0">
 						<li>{payments.TOTAL}
+							
 							<span>$00.00</span>
 						</li>
 					</ul>

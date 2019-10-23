@@ -22,12 +22,14 @@ class CardPayment extends React.Component{
                         <label htmlFor="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="CREDIT_CARD" id="CREDIT_CARD" />
                         <br/>
+                        <div className="inline-field mr-field">
                         <label htmlFor="EXPIRY_DATE">{card_field.EXPIRY_DATE}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="EXPIRY_DATE" id="EXPIRY_DATE" />
-                        <br/>
+                        </div>
+                        <div className="inline-field ml-field">
                         <label htmlFor="CVC">{card_field.CVC}</label><br/>
                         <input type="text" onChange={this.handleChange.bind(this)} name="CVC" id="CVC" />
-                        <br/>
+                        </div>
                     </div>
                     <div className="sub-btn">
                     <input type="button" onClick={() => {this.props.sendPayment(this.state, history)}} value={card_field.PAY} />
