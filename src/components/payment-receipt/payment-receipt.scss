@@ -76,3 +76,59 @@ h4.site--main {
     border-radius: 20px !important;
     margin-bottom: 0;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.modal .modal-dialoug {
+    max-width: 320px;
+    background: #fff;
+    min-height: 150px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.modal .modal-dialoug p {
+    padding: 30px 30px;
+    text-align: center;
+    color: #1B3535;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.modal .model-btn {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.btn-gray {
+    background-color: #F7F6F5 !important;
+    color: black !important;
+}
+
+.custom-btn {
+    background-color: #00AAB7;
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}

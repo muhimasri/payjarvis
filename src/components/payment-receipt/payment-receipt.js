@@ -6,6 +6,10 @@ import BoyImg from './boy.png';
 
 class Payment extends React.Component{
 
+    state={
+         isDisplay:false   
+    }
+
     render(){
         const { language_text } = this.props;
 
@@ -52,10 +56,32 @@ class Payment extends React.Component{
                                 <input type="text" id="lname" name="lastname" placeholder="Email"/>
                             </div>
                             <div className="sub-btn">
-                                <input type="button" value={paymentText.SEND_BUTTON}/>
+                                <input type="button" value={paymentText.SEND_BUTTON} onClick={()=>this.setState({isDisplay:true})}/>
                             </div>
                         </div>				
 			    </div>
+                { this.state.isDisplay &&
+                    <div class="modal">
+                        <div class="modal-dialoug">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div>
+                                    <p>We are working on making your 
+                                        bill payments easier, would you 
+                                        like us to email you once we 
+                                        expand our service?
+                                    </p>
+                                    </div>
+                                    <div class="model-btn">
+                                        <a href="#" class="custom-btn mb-15">Yes, please</a>
+                                        <a href="#" class="custom-btn btn-gray" onClick={()=>this.setState({isDisplay:false})}>No, thanks</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
             </React.Fragment>
         )
     }
