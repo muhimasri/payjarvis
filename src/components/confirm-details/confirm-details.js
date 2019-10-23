@@ -24,14 +24,17 @@ class ConfirmTicket extends React.Component{
     componentWillReceiveProps = (newProps) => {
         if(newProps.detail_data.response_success)
             this.setState({display:false})
+        
+        if(newProps.image.response_success){
+            if(newProps.image.response_success.isPaid)
+                newProps.history.push('/payment-receipt')
+        }
     }
 
     render(){
         const { language_text, image, detail_data, match} = this.props;
         const fields = language_text.CONFIRM_DETAILS_COMPONENT.FIELDS
         const payments = language_text.CONFIRM_DETAILS_COMPONENT.PAYMENTS
-        console.log('This is APIs response for uploaded image', image)
-        console.log('This is APIs response for PUT', detail_data)
 
         return(
             <div className="detail-data">

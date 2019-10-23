@@ -3,7 +3,8 @@ export const getImageDataById = (id) => dispatch => {
     dispatch({type: 'GET_IMAGE_DETAIL_DATA'})
     const url = `http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/api/tickets/${id}`;
     axios.get(url)
-    .then(function (response) {        
+    .then(function (response) {
+      // response.data.data.isPaid = true;        
       dispatch( {
           type: 'GET_IMAGE_DETAIL_DATA_SUCCESS',
           payload:response.data.data
