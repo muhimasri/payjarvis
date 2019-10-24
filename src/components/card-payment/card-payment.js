@@ -9,11 +9,11 @@ class CardPayment extends React.Component{
         return(
             <React.Fragment>
                 <StripeProvider apiKey="pk_test_aeMP3z7uBMAdY1pv6tD7Ag26">
-                        <Elements>
-                            <CheckoutForm />
-                        </Elements>
-                    </StripeProvider>
-        </React.Fragment>
+                    <Elements>
+                        <CheckoutForm {...this.props} />
+                    </Elements>
+                </StripeProvider>
+            </React.Fragment>
         )
     }
 }

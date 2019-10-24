@@ -1,5 +1,4 @@
 export const sendPaymentReceipt = (email) => (dispatch) => {
-    console.log('this is payment receipt data by action :->', email)
     //this dispatch will use when api call starts
     dispatch({
         type: 'SEND_PAYMENT_RECEIPT'

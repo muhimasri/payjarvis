@@ -1,17 +1,30 @@
+import axios from 'axios'
 export const sendPayment = (data, history) => (dispatch) => {
-    console.log('this is payment data by action :->', data)
+
+    console.log('DATA',data);
+
     //this dispatch will use when api call starts
-    dispatch({
-        type: 'SEND_PAYMENT'
-    })
-    //this dispatch will use when api call success 
-    setTimeout(() => {
-        dispatch({
+    dispatch( {
+        type: 'SEND_PAYMENT',
+      })
+
+    const url = 'http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/charge';
+    axios.post(url,data)
+      .then(function (response) {        
+        dispatch( {
             type: 'SEND_PAYMENT_SUCCESS',
-            payload: {'status': 'success'}
-        })
-        history.push('/payment-receipt')
-    }, 3000);
+            payload:response.data.data
+          })
+          history.push('/payment-receipt')
+      })
+      .catch(function (error) {
+        dispatch( {
+            type: 'SEND_PAYMENT_FAILURE',
+            payload:error
+          })
+      });
+
+ 
     // this dispatch will use when api call returns error
     // setTimeout(() => {
     //     dispatch({

@@ -1,6 +1,5 @@
 import axios from 'axios'
 export const addDetail = (data) => (dispatch) => {
-    console.log('action by jaril', data)
     const url = `http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/api/tickets/${data.id}`;
     //this dispatch will use when api call starts
     delete data.error;
@@ -10,8 +9,6 @@ export const addDetail = (data) => (dispatch) => {
     })
     axios.put(url, data)
     .then(function (response) {   
-      console.log('This is sending Data', data);
-      console.log('this is put api by action', response)
         dispatch( {
             type: 'ADD_DETAIL_SUCCESS',
             payload:response.data.data

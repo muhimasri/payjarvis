@@ -1,7 +1,6 @@
 import './confirm-details-result.scss';
 import React from 'react';
 import CardPayment from '../card-payment'
-import { connect } from 'react-redux';
 import Utils from '../../services/utils';
 import Apple from './apple-pay.svg';
 import Gpay from './googlepay.svg';
@@ -32,10 +31,10 @@ class ConfirmDetailResult extends React.Component{
 		
         const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
 		let imgText;
-		if(moduleCode == 'ios')
-			imgText = <img src={Apple}/>
-		else if (moduleCode == 'android')
-			imgText =<img src={Gpay}/>
+		if(moduleCode === 'ios')
+			imgText = <img src={Apple} alt="Apple"/>
+		else if (moduleCode === 'android')
+			imgText =<img src={Gpay} alt="Gpay"/>
 		else 
 			imgText = 'Pay'
 
@@ -47,25 +46,25 @@ class ConfirmDetailResult extends React.Component{
 					<ul>
 						<li>{payments.ADMINISTRATIVE_PENALTY}
 							<Tooltip title={payments.ADMINISTRATIVE_PENALTY}>
-								<img src={Info}/>
+								<img src={Info} alt="Info"/>
      					 	</Tooltip>
 							<span>${details.administrativePenaltyAmount}</span>
 						</li>
 						<li>{payments.ADDRESS_SEARCH_FEE}
 							<Tooltip title={payments.ADDRESS_SEARCH_FEE}>
-								<img src={Info}/>
+								<img src={Info} alt="Info"/>
 							</Tooltip>
 							<span>$12.00</span>
 						</li>
 						<li>{payments.LATE_PAYMENT_FEE}
 							<Tooltip title={payments.LATE_PAYMENT_FEE}>
-								<img src={Info}/>
+								<img src={Info} alt="Info"/>
      					 	</Tooltip>
 							<span>$25.00</span>
 						</li>
 						<li className="disable-font">{payments.SERVICE_CHARGE}
 							<Tooltip title={payments.SERVICE_CHARGE}>
-								<img src={Info}/>
+								<img src={Info} alt="Info"/>
      					 	</Tooltip>
 							<span>$8.23</span>
 						</li>

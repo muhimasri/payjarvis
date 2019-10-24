@@ -15,7 +15,7 @@ class ConfirmTicket extends React.Component{
     }
 
     componentWillMount = () => {
-        const { image, history, match } = this.props;
+        const { history, match } = this.props;
         if(!match.params.id)
             history.push('/')
         this.props.getImageDataById(match.params.id);
@@ -26,6 +26,7 @@ class ConfirmTicket extends React.Component{
             this.setState({display:false})
         
         if(newProps.image.response_success){
+            console.log('RESPONSE',newProps.image.response_success);
             if(newProps.image.response_success.isPaid)
                 newProps.history.push('/payment-receipt')
         }

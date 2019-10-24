@@ -18,7 +18,7 @@ class Payment extends React.Component{
         return(
             <React.Fragment>
                 <div className="detail-data payment-title">
-                    <img src={BoyImg} className="main-img"/>
+                    <img src={BoyImg} className="main-img" alt="Banner"/>
                     <h4 className="site--main">Please wait...</h4>
                     <div className="payment-details">
                         <ul>
@@ -82,9 +82,9 @@ class Payment extends React.Component{
                                     </React.Fragment>
                                     :
                                     <React.Fragment>
-                                        <div>
+                                        <div className="disable-font">
                                             <p>Email has been sent to your mail!</p>
-                                            <span className="disable-font">We are working on making your bill payments easier!</span>
+                                            <h1>We are working on making your bill payments easier!</h1>
                                         </div>
                                         <div class="model-btn">
                                             <a href="#" class="custom-btn mb-15" onClick={()=>this.props.updateDisplay(false)}>Ok</a>

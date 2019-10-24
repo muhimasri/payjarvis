@@ -10,7 +10,7 @@ class PaidReceipt extends React.Component{
             <div className="detail-data">
 				<h4>Your Parking Ticket Butler</h4>
 					<div className="receipt-container">
-						<img src={BoyImg} className="header-img"/>
+						<img src={BoyImg} className="header-img" alt="Banner"/>
 						<h3>Paid Receipt</h3>
 						<ul>
 							<li>Violation Notice Number

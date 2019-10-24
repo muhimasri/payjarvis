@@ -13,7 +13,7 @@ class TicketUpload extends React.Component {
     render() {
         const { image } = this.props;
         return (
-          <img src={image.url} />
+          <img src={image.url} alt="Images"/>
         )
     }
 }

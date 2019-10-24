@@ -10,7 +10,6 @@ const detailReducer = (state = initialState, action) => {
 		case 'ADD_DETAIL':
             return Object.assign({}, state, {loading: true})
         case 'ADD_DETAIL_SUCCESS':
-            console.log("Reducer Action ==== >",action.payload);
             return Object.assign({}, state, {loading: false, response_success: action.payload})
         case 'ADD_DETAIL_FAILURE':
             return Object.assign({}, state, {loading: false, response_fail: action.payload})

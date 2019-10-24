@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import './checkout-form.scss';
 import { sendPayment } from '../actions/payment.action';
 import { CardNumberElement,
-  CardExpiryElement,
-  CardCVCElement,
-  injectStripe} from 'react-stripe-elements';
+         CardExpiryElement,
+         CardCVCElement,
+         injectStripe} from 'react-stripe-elements';
 
 const createOptions = () => {
   return {
@@ -23,7 +23,7 @@ const createOptions = () => {
   };
 };
 
-class CheckoutForm extends Component {
+class CheckoutForm extends React.Component {
   state = {
     errorMessage: '',
   };
@@ -37,24 +37,24 @@ class CheckoutForm extends Component {
   // });
   };
 
-  handleSubmit = async (evt) => {
-    evt.preventDefault();
+  handleSubmit = async() => {
+    const { detail_data, history} = this.props;
     if (this.props.stripe) {
       let {token} = await this.props.stripe.createToken({name: "Name"});
-      let response = await fetch("http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/charge", {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({token: token.id, amount: '50', ticketId: '5db0feb972252b1a40a4ae05'})
-      });
-  
-      if (response.ok) console.log("Purchase Complete!")
+      const updateObj = {
+        token: token.id,
+        amount: detail_data.response_success.total || '50',
+        ticketId: detail_data.response_success.ticketId
+      }
+      this.props.sendPayment(updateObj,history)
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
   };
   
   render() {
-    const { card_field, language_text, payment, history } = this.props;
+    const { payment,  } = this.props;
+    
     if(payment.loading)
             return(<h1>loading</h1>)
     return (
