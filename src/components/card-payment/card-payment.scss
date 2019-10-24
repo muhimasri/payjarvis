@@ -3,16 +3,16 @@
     padding: 20px 10px;
 }
 
-.form-data input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    display: inline-block;
-    border-radius: 10px !important;
-    border: 1px solid rgba(27, 53, 53, 0.1);
-    box-sizing: border-box;
-}
+// .form-data input[type=text], select {
+//     width: 100%;
+//     padding: 12px 20px;
+//     margin-top: 5px;
+//     margin-bottom: 15px;
+//     display: inline-block;
+//     border-radius: 10px !important;
+//     border: 1px solid rgba(27, 53, 53, 0.1);
+//     box-sizing: border-box;
+// }
 
 .sub-btn {
     margin-top: 10px;
@@ -24,3 +24,18 @@
     font-size: 14px;
     text-align: center;
 }
+
+.inline-field {
+    float: left;
+    width: 48%;
+    /* margin: 0px 6px; */
+}
+
+.ml-field{
+    margin-left:6px;
+}
+
+.mr-field{
+    margin-right:5px;
+}
+

@@ -7,10 +7,10 @@ class PaidReceipt extends React.Component{
 
     render(){
         return(
-            <div class="detail-data">
+            <div className="detail-data">
 				<h4>Your Parking Ticket Butler</h4>
-					<div class="receipt-container">
-						<img src={BoyImg} class="header-img"/>
+					<div className="receipt-container">
+						<img src={BoyImg} className="header-img"/>
 						<h3>Paid Receipt</h3>
 						<ul>
 							<li>Violation Notice Number
@@ -40,8 +40,8 @@ class PaidReceipt extends React.Component{
 								<span>919823489</span>
 							</li>
 						</ul>
-						<ul class="border-0">
-							<li class="enable-font">Total
+						<ul className="border-0">
+							<li className="enable-font">Total
 								<span>$89.50</span>
 							</li>
 						</ul>

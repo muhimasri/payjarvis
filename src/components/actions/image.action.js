@@ -1,7 +1,21 @@
 import axios from 'axios'
-export const getTicketDetails = () => {
-    return fetch(`assets/json/ticket-details.json`)
-        .then(response => response.json())
+export const getImageDataById = (id) => dispatch => {
+    dispatch({type: 'GET_IMAGE_DETAIL_DATA'})
+    const url = `http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/api/tickets/${id}`;
+    axios.get(url)
+    .then(function (response) {
+      // response.data.data.isPaid = true;        
+      dispatch( {
+          type: 'GET_IMAGE_DETAIL_DATA_SUCCESS',
+          payload:response.data.data
+        })
+    })
+    .catch(function (error) {
+      dispatch( {
+          type: 'GET_IMAGE_DETAIL_DATA_FAILURE',
+          payload:error
+        })
+    });
 }
 
 export const uploadTicket = (file,history) => dispatch => {
@@ -15,9 +29,8 @@ export const uploadTicket = (file,history) => dispatch => {
       .then(function (response) {        
         dispatch( {
             type: 'UPLOAD_IMAGE_SUCCESS',
-            payload:response.data.data
+            // payload:response.data.data
           })
-          console.log("Response ---> ",response.data.data.ticketId);
           history.push(`/confirm-details/${response.data.data.ticketId}`)
       })
       .catch(function (error) {

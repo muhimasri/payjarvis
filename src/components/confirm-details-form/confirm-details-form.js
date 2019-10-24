@@ -13,16 +13,16 @@ class ConfirmDetailForm extends React.Component{
         error: []
     }
 
-    componentWillMount = () => {
-        const { response } = this.props;
-        if(!response)
-          return;
-        this.setState({
-            DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
-            VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
-            PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
-            PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
-        })
+    componentWillReceiveProps = (newProps) => {
+        const { response } = newProps;
+        if(newProps.response){
+            this.setState({
+                DATE_OF_VIOLATION: response.dateOfViolation ? response.dateOfViolation : '',
+                VIOLATION_NOTICE: response.violationNoticeNumber ? response.violationNoticeNumber : '',
+                PLATE_NUMBER: response.plateNumber ? response.plateNumber : '',
+                PENALTY_AMOUNT: response.administrativePenaltyAmount ? response.administrativePenaltyAmount : ''
+            })
+        }
     }
 
     handleChange(event){
@@ -46,7 +46,14 @@ class ConfirmDetailForm extends React.Component{
             error.push('EMAIL')
         this.setState({ error });
         if(error.length > 0) return;
-        this.props.addDetail(this.state)
+        this.props.addDetail({
+            id: this.props.id, 
+            dateOfViolation:DATE_OF_VIOLATION,
+            violationNoticeNumber:VIOLATION_NOTICE,
+            plateNumber:PLATE_NUMBER,
+            administrativePenaltyAmount:PENALTY_AMOUNT,
+            email:EMAIL
+        })
     }
 
     render(){
@@ -54,7 +61,7 @@ class ConfirmDetailForm extends React.Component{
         const { DATE_OF_VIOLATION, VIOLATION_NOTICE, PLATE_NUMBER, PENALTY_AMOUNT, error } = this.state;
         return(
         <React.Fragment>
-            <div class="title-des">
+            <div className="title-des">
                 <h4>{language_text.CONFIRM_DETAILS_COMPONENT.LABEL}</h4>
                 <p>{language_text.CONFIRM_DETAILS_COMPONENT.TEXT}</p>
                 <ModalImage className="main-img"
@@ -68,6 +75,9 @@ class ConfirmDetailForm extends React.Component{
                     <label htmlFor="DATE_OF_VIOLATION">{fields.DATE_OF_VIOLATION}</label><br/>
                     <input className={error.includes('DATE_OF_VIOLATION') && 'error-field'} onChange={this.handleChange.bind(this)} value={DATE_OF_VIOLATION} type="text" name="DATE_OF_VIOLATION" id="DATE_OF_VIOLATION" />
                     <br/>
+                    <div className="error-message">
+                        Date of violation is more than 60 days past due. A payment will have to be made at a <span className="text-blue">Service Ontario location.</span>
+					</div>
                     <label htmlFor="VIOLATION_NOTICE">{fields.VIOLATION_NOTICE}</label><br/>
                     <input className={error.includes('VIOLATION_NOTICE') && 'error-field'} onChange={this.handleChange.bind(this)} value={VIOLATION_NOTICE} type="text" name="VIOLATION_NOTICE" id="VIOLATION_NOTICE" />
                     <br/>

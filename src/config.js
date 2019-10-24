@@ -26,12 +26,14 @@ export const LANGUAGE = {
                     "ADDRESS_SEARCH_FEE":"Address Search Fee",
                     "LATE_PAYMENT_FEE":"Late Payment Fee",
                     "SERVICE_CHARGE":"Service Charge",
-                    "TOTAL":"Total"
+                    "TOTAL":"Total",
+                    "PAY_WITH_CARD":"Pay with Card"
                 },
                 "CARD_FIELDS":{
                     "CREDIT_CARD":"Credit Card",
                     "EXPIRY_DATE":"Expiry Date",
-                    "CVC":"CVC"
+                    "CVC":"CVC",
+                    "PAY":"Pay"
                 }
 
             },
@@ -73,12 +75,14 @@ export const LANGUAGE = {
                     "ADDRESS_SEARCH_FEE":"Frais de recherche d'adresse",
                     "LATE_PAYMENT_FEE":"Frais de retard de paiement",
                     "SERVICE_CHARGE":"Frais de service",
-                    "TOTAL":"Totale"
+                    "TOTAL":"Totale",
+                    "PAY_WITH_CARD":"Payer avec la carte"
                 },
                 "CARD_FIELDS":{
                     "CREDIT_CARD":"Carte de crédit",
                     "EXPIRY_DATE":"Date d'expiration",
-                    "CVC":"CVC"
+                    "CVC":"CVC",
+                    "PAY":"Payer"
                 }
             },
             "PAYMENT":{
