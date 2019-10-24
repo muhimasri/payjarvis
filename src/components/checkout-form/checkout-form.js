@@ -41,10 +41,10 @@ class CheckoutForm extends Component {
     evt.preventDefault();
     if (this.props.stripe) {
       let {token} = await this.props.stripe.createToken({name: "Name"});
-      let response = await fetch("http://localhost:3000/charge", {
+      let response = await fetch("http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/charge", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({token: token.id, amount: '50', ticketId: '5db0dd5f2a60353c0a374a16'})
+        body: JSON.stringify({token: token.id, amount: '50', ticketId: '5db0feb972252b1a40a4ae05'})
       });
   
       if (response.ok) console.log("Purchase Complete!")
