@@ -1,48 +1,21 @@
 import './card-payment.scss';
-import { connect } from 'react-redux';
-import { sendPayment } from '../actions/payment.action';
 import React from 'react';
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from '../checkout-form'
 
 class CardPayment extends React.Component{
 
-    handleChange(event){
-        this.setState({
-            [event.target.name]:event.target.value
-        });
-    }    
-
     render(){
-
-        const { card_field, language_text, payment, history } = this.props;
-        if(payment.loading)
-            return(<h1>loading</h1>)
         return(
             <React.Fragment>
-                <form className="form-data" noValidate autoComplete="off">
-                    <div className="form-field">
-                        <label htmlFor="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="CREDIT_CARD" id="CREDIT_CARD" />
-                        <br/>
-                        <label htmlFor="EXPIRY_DATE">{card_field.EXPIRY_DATE}</label><br/>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="EXPIRY_DATE" id="EXPIRY_DATE" />
-                        <br/>
-                        <label htmlFor="CVC">{card_field.CVC}</label><br/>
-                        <input type="text" onChange={this.handleChange.bind(this)} name="CVC" id="CVC" />
-                        <br/>
-                    </div>
-                    <div className="sub-btn">
-                    <input type="button" onClick={() => {this.props.sendPayment(this.state, history)}} value="Pay" />
-						</div>
-                </form>
+                <StripeProvider apiKey="pk_test_aeMP3z7uBMAdY1pv6tD7Ag26">
+                        <Elements>
+                            <CheckoutForm />
+                        </Elements>
+                    </StripeProvider>
         </React.Fragment>
         )
     }
 }
 
-function mapStateToProps(state) {
-    return {
-      payment: state.payment
-    };
-  }
-
-export default connect(mapStateToProps, {sendPayment}) (CardPayment)
+export default CardPayment;
