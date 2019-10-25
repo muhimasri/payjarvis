@@ -118,5 +118,5 @@ export const LANGUAGE = {
         }
     ],
     "LANGUAGE_MENU": ["ENGLISH", "FRENCH"],
-    "LANGUAGE_DEFAULT": "FRENCH"
+    "LANGUAGE_DEFAULT": "ENGLISH"
 }
