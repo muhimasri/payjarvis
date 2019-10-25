@@ -44,9 +44,18 @@ export const LANGUAGE = {
                 "WAITING_FOR":"Waiting for",
                 "PAYMENT_DATE":"Payment date",
                 "REFERENCE_NO":"Reference Number",
+                "SEND":"Send me a reciept",
                 "SEND_RECECIPT":"Validate the details below based on the Parking Violation Notice.",
                 "EMAIL":"E-mail",
                 "SEND_BUTTON":"Send"
+            },
+            "SUBSCRIBE_POPUP":{
+                "TEXT1":"We are working on making your bill payments easier, would you like us to email you once we expand our service?",
+                "TEXT2":"Email has been sent to your mail!",
+                "TEXT3":"We are working on making your bill payments easier!",
+                "BTN1":"Yes, please",
+                "BTN2":"No, thanks",
+                "BTN3":"Ok"
             },
             "LANGUAGE": "ENGLISH"
         }, {
@@ -92,13 +101,22 @@ export const LANGUAGE = {
                 "WAITING_FOR":"Attendre",
                 "PAYMENT_DATE":"Date de paiement",
                 "REFERENCE_NO":"Numéro de réference",
+                "SEND":"Envoyez-moi un reçu",
                 "SEND_RECECIPT":"Validez les détails ci-dessous en fonction de la notification d'infraction de stationnement.",
                 "EMAIL":"Email",
                 "SEND_BUTTON":"Envoyer"
+            },
+            "SUBSCRIBE_POPUP":{
+                "TEXT1":"Nous travaillons à faciliter le paiement de vos factures. Souhaitez-vous que nous vous envoyions un e-mail une fois que nous avons étendu notre service?",
+                "TEXT2":"Email a été envoyé à votre mail!",
+                "TEXT3":"Nous travaillons à faciliter le paiement de vos factures!",
+                "BTN1":"Oui s'il vous plaît",
+                "BTN2":"Non merci",
+                "BTN3":"D'accord"
             },
             "LANGUAGE": "FRENCH"
         }
     ],
     "LANGUAGE_MENU": ["ENGLISH", "FRENCH"],
-    "LANGUAGE_DEFAULT": "ENGLISH"
+    "LANGUAGE_DEFAULT": "FRENCH"
 }

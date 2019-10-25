@@ -15,6 +15,7 @@ class Payment extends React.Component{
     render(){
         const { language_text, receipt } = this.props;
         const paymentText=language_text.PAYMENT;
+        const popupText=language_text.SUBSCRIBE_POPUP;
         return(
             <React.Fragment>
                 <div className="detail-data payment-title">
@@ -49,8 +50,8 @@ class Payment extends React.Component{
                         </ul>
                     </div>
                         <div className="send-recipt-card">
-                            <h3>Send me a reciept</h3>
-                            <p>Validate the details below  based on the  parking  violation Notice.</p>
+                            <h3>{paymentText.SEND}</h3>
+                            <p>{paymentText.SEND_RECECIPT}</p>
                             <div className="form-group">
                                 <label htmlFor="lname">{paymentText.EMAIL}</label>
                                 <input type="text" id="lname" name="lastname" placeholder="Email" onChange={(e) => { this.setState({ email : e.target.value })}}/>
@@ -69,25 +70,22 @@ class Payment extends React.Component{
                                     {!receipt.subscribe ?
                                     <React.Fragment>
                                         <div>
-                                            <p>We are working on making your 
-                                                bill payments easier, would you 
-                                                like us to email you once we 
-                                                expand our service?
+                                            <p>{popupText.TEXT1}
                                             </p>
                                         </div>
                                         <div class="model-btn">
-                                            <a href="#" class="custom-btn mb-15" onClick={()=>this.props.updateSubscribe()}>Yes, please</a>
-                                            <a href="#" class="custom-btn btn-gray" onClick={()=>this.props.updateDisplay(false)}>No, thanks</a>
+                                            <a href="#" class="custom-btn mb-15" onClick={()=>this.props.updateSubscribe()}>{popupText.BTN1}</a>
+                                            <a href="#" class="custom-btn btn-gray" onClick={()=>this.props.updateDisplay(false)}>{popupText.BTN2}</a>
                                         </div>
                                     </React.Fragment>
                                     :
                                     <React.Fragment>
                                         <div className="disable-font">
-                                            <p>Email has been sent to your mail!</p>
-                                            <h1>We are working on making your bill payments easier!</h1>
+                                            <p>{popupText.TEXT2}</p>
+                                            <h1>{popupText.TEXT3}</h1>
                                         </div>
                                         <div class="model-btn">
-                                            <a href="#" class="custom-btn mb-15" onClick={()=>this.props.updateDisplay(false)}>Ok</a>
+                                            <a href="#" class="custom-btn mb-15" onClick={()=>this.props.updateDisplay(false)}>{popupText.BTN3}</a>
                                         </div>
                                     </React.Fragment>
                                     }
