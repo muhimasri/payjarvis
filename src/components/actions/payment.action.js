@@ -1,8 +1,6 @@
 import axios from 'axios'
 export const sendPayment = (data, history) => (dispatch) => {
 
-    console.log('DATA',data);
-
     //this dispatch will use when api call starts
     dispatch( {
         type: 'SEND_PAYMENT',
