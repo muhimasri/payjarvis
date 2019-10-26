@@ -1,14 +1,16 @@
 import axios from 'axios'
-export const getImageDataById = (id) => dispatch => {
+export const getImageDataById = (id, history) => dispatch => {
     dispatch({type: 'GET_IMAGE_DETAIL_DATA'})
     const url = `http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/api/tickets/${id}`;
     axios.get(url)
     .then(function (response) {
       // response.data.data.isPaid = true;        
       dispatch( {
-          type: 'GET_IMAGE_DETAIL_DATA_SUCCESS',
-          payload:response.data.data
-        })
+        type: 'GET_IMAGE_DETAIL_DATA_SUCCESS',
+        payload:response.data.data
+      })
+      if(response.data.data.isPaid)
+        history.push('/payment-receipt')
     })
     .catch(function (error) {
       dispatch( {

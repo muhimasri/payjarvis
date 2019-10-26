@@ -1,35 +1,28 @@
 import './confirm-details.scss';
 import React from 'react'
 import withF from '../HOC/withF';
-import {addDetail} from '../actions/detail.action';
+import {addDetail, setDisplay} from '../actions/detail.action';
 import {getImageDataById} from '../actions/image.action';
 import DetailsForm from '../confirm-details-form';
 import DetailsResult from '../confirm-details-result';
 import Loading from '../loader';
 import { connect } from 'react-redux';
+import Back from './back.png';
+
 
 class ConfirmTicket extends React.Component{
-    
-    state={
-        display: true
-    }
 
     componentWillMount = () => {
         const { history, match } = this.props;
         if(!match.params.id)
             history.push('/')
-        this.props.getImageDataById(match.params.id);
+        this.props.getImageDataById(match.params.id, history);
     }
 
-    componentWillReceiveProps = (newProps) => {
-        if(newProps.detail_data.response_success)
-            this.setState({display:false})
-        
-        if(newProps.image.response_success){
-            console.log('RESPONSE',newProps.image.response_success);
-            if(newProps.image.response_success.isPaid)
-                newProps.history.push('/payment-receipt')
-        }
+    handleCallBack = () => {
+        const { match } = this.props;
+        this.props.getImageDataById(match.params.id)
+        this.props.setDisplay(true)
     }
 
     render(){
@@ -39,8 +32,12 @@ class ConfirmTicket extends React.Component{
 
         return(
             <div className="detail-data">
-                {this.state.display ? <div className="steps--main step-one"><span className="step--left active">01</span><span className="step--right">/2</span></div> : <div className="steps--main step-two"><span className="step--left active">02</span><span className="step--right">/2</span></div>  }
-                {this.state.display ?
+                {!detail_data.displayForm && 
+                // <input type="button" className="back-btn" value=" Back" onClick={this.handleCallBack} />
+                    <a href="#" onClick={this.handleCallBack} className="back-link"><img style={{marginRight: '8px'}} src={Back}></img>Back</a>
+                }
+                {detail_data.displayForm ? <div className="steps--main step-one"><span className="step--left active">01</span><span className="step--right">/2</span></div> : <div className="steps--main step-two"><span className="step--left active">02</span><span className="step--right">/2</span></div>  }
+                {detail_data.displayForm ?
                     <DetailsForm response={image.response_success && image.response_success} language_text={language_text} fields={fields} id={match.params.id} addDetail={(data) => this.props.addDetail(data)}/>
                  : 
                     <DetailsResult payments={payments} {...this.props} />
@@ -58,4 +55,4 @@ function mapStateToProps(state) {
      detail_data: state.detail
     };
   } 
-export default connect(mapStateToProps, {addDetail, getImageDataById }) (withF(ConfirmTicket));
+export default connect(mapStateToProps, {addDetail, getImageDataById, setDisplay }) (withF(ConfirmTicket));

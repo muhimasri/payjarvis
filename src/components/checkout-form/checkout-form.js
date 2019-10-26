@@ -6,6 +6,7 @@ import { CardNumberElement,
          CardExpiryElement,
          CardCVCElement,
          injectStripe} from 'react-stripe-elements';
+import Loader from '../loader';
 
 const createOptions = () => {
   return {
@@ -54,39 +55,39 @@ class CheckoutForm extends React.Component {
   
   render() {
     const { payment,  } = this.props;
-    
-    if(payment.loading)
-            return(<h1>loading</h1>)
     return (
-      <form className="form-data">
-                    <div className="form-field">
-                    {/* <label htmlFor="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/> */}
-                        <div className="txt-input">
-                        <CardNumberElement
-                        {...createOptions()}
-                        onChange={this.handleChange.bind(this)}
-                        />
-                        </div>
-                    </div>
-                    <div className="form-field">
+      <React.Fragment>
+        <form className="form-data">
+          <div className="form-field">
+          {/* <label htmlFor="CREDIT_CARD">{card_field.CREDIT_CARD}</label><br/> */}
+              <div className="txt-input">
+              <CardNumberElement
+              {...createOptions()}
+              onChange={this.handleChange.bind(this)}
+              />
+              </div>
+          </div>
+          <div className="form-field">
 
-                    {/* <label htmlFor="EXPIRY_DATE">{card_field.EXPIRY_DATE}</label><br/> */}
-                        <div className="txt-input">
-                        <CardExpiryElement {...createOptions()} onChange={this.handleChange.bind(this)} />
-                        </div>
-                    </div>
-                    <div className="form-field">
+          {/* <label htmlFor="EXPIRY_DATE">{card_field.EXPIRY_DATE}</label><br/> */}
+              <div className="txt-input">
+              <CardExpiryElement {...createOptions()} onChange={this.handleChange.bind(this)} />
+              </div>
+          </div>
+          <div className="form-field">
 
-                    {/* <label htmlFor="CVC">{card_field.CVC}</label><br/> */}
-                        <div className="txt-input">
-                        <CardCVCElement {...createOptions()} onChange={this.handleChange.bind(this)} />
-                        </div>
-                    </div>
-                    <div className="error" role="alert">
-                    {this.state.errorMessage}
-                    </div>
-                    <input type="button" value="Pay" onClick={this.handleSubmit.bind(this)} />
-                </form>
+          {/* <label htmlFor="CVC">{card_field.CVC}</label><br/> */}
+              <div className="txt-input">
+              <CardCVCElement {...createOptions()} onChange={this.handleChange.bind(this)} />
+              </div>
+          </div>
+          <div className="error" role="alert">
+          {this.state.errorMessage}
+          </div>
+          <input type="button" value="Pay" onClick={this.handleSubmit.bind(this)} />
+      </form>
+      {payment.loading && <Loader />}
+      </React.Fragment>
     );
   }
 }

@@ -33,3 +33,10 @@ export const addDetail = (data) => (dispatch) => {
     //     payload: {'status': 'fail'}
     // })
 };
+
+export const setDisplay = (data) => (dispatch) => {
+    dispatch({
+        type: 'SET_DISPLAY_FORM',
+        payload: data
+    })
+};
