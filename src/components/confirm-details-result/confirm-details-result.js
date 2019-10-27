@@ -88,21 +88,7 @@ class ConfirmDetailResult extends React.Component{
 					
 				</div>
 
-                <div className="btn-pay">
-					<a href="#" className="custom-btn btn-gray mb-15">{imgText}</a>
-					<a href="#" className={showCardPayment ? "custom-btn" : "custom-btn btn-gray"} onClick={this.showPaymentForm.bind(this)}>{payments.PAY_WITH_CARD}</a>
-				</div>
-				               
-                {/* <div className="cust-check">
-					<label className="container">Split Payment
-						<input type="checkbox"/>
-						<span className="checkmark"></span>
-					</label>
-                </div> */}
-                
-                { showCardPayment &&
-                    <CardPayment card_field={card_field} language_text={language_text}  {...this.props} />
-                }
+                <CardPayment card_field={card_field} language_text={language_text}  {...this.props} />
            </div>
                 
                

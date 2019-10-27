@@ -10,7 +10,7 @@ const utils = {
               return 'ios';
           }
       
-          return '';
+          return null;
       } 
 }
 
