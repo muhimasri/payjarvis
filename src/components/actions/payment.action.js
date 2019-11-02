@@ -6,7 +6,7 @@ export const sendPayment = (data, history) => (dispatch) => {
         type: 'SEND_PAYMENT',
       })
 
-    const url = 'http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/charge';
+    const url = 'http://localhost:3000/charge';
     axios.post(url,data)
       .then(function (response) {        
         dispatch( {

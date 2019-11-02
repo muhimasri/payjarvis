@@ -4,7 +4,7 @@ export const getTicketDetails = () => {
 }
 
 export const uploadTicket = (file) => {
-    const url = 'http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com/api/tickets';
+    const url = 'http://localhost:3000/api/tickets';
     try {
         const formData = new FormData();
         formData.append('file', file[0]);

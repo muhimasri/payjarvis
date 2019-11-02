@@ -1,43 +1,19 @@
 import './confirm-details-result.scss';
 import React from 'react';
 import CardPayment from '../card-payment'
-import Utils from '../../services/utils';
-import Apple from './apple-pay.svg';
-import Gpay from './googlepay.svg';
 import Info from './info.png';
 import Tooltip from '@material-ui/core/Tooltip';
 
 class ConfirmDetailResult extends React.Component{ 
-
-    state={
-        showCardPayment:false
-    }
     
-    showPaymentForm = () => {
-        this.setState({
-            showCardPayment:!this.state.showCardPayment
-        })
-    }
-
     render(){
-
-		var moduleCode = Utils.getDeviceOperatingSystem();
-
 		const { payments, language_text, detail_data } = this.props;
-
-		const { showCardPayment } = this.state;
-
 		const details= detail_data.response_success;
+		const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
+		const serviceCharge = parseInt(detail_data.response_success.administrativePenaltyAmount * 0.029, 10);
+		const totalAmount = parseInt(detail_data.response_success.administrativePenaltyAmount, 10)
+		+ serviceCharge + 0.3;
 		
-        const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
-		let imgText;
-		if(moduleCode === 'ios')
-			imgText = <img src={Apple} alt="Apple"/>
-		else if (moduleCode === 'android')
-			imgText =<img src={Gpay} alt="Gpay"/>
-		else 
-			imgText = 'Pay'
-
 		return(
             <React.Fragment>
                 <div className="detail-data payment-title">
@@ -48,25 +24,28 @@ class ConfirmDetailResult extends React.Component{
 							<Tooltip title={payments.ADMINISTRATIVE_PENALTY}>
 								<img src={Info} alt="Info"/>
      					 	</Tooltip>
-							<span>${details.administrativePenaltyAmount}</span>
+							  <span>$</span>
+							<span>{details.administrativePenaltyAmount}</span>
 						</li>
-						<li>{payments.ADDRESS_SEARCH_FEE}
+						{/* <li>{payments.ADDRESS_SEARCH_FEE}
 							<Tooltip title={payments.ADDRESS_SEARCH_FEE}>
 								<img src={Info} alt="Info"/>
 							</Tooltip>
-							<span>$12.00</span>
+							<span>$</span>
+							<span>12.00</span>
 						</li>
 						<li>{payments.LATE_PAYMENT_FEE}
 							<Tooltip title={payments.LATE_PAYMENT_FEE}>
 								<img src={Info} alt="Info"/>
      					 	</Tooltip>
-							<span>$25.00</span>
-						</li>
+							<span>$</span>
+							<span>0.00</span>
+						</li> */}
 						<li className="disable-font">{payments.SERVICE_CHARGE}
 							<Tooltip title={payments.SERVICE_CHARGE}>
 								<img src={Info} alt="Info"/>
      					 	</Tooltip>
-							<span>$8.23</span>
+							<span>${serviceCharge}</span>
 						</li>
 					</ul>
 
@@ -81,8 +60,7 @@ class ConfirmDetailResult extends React.Component{
 
 					<ul className="border-0">
 						<li>{payments.TOTAL}
-							
-							<span>$00.00</span>
+							<span>${totalAmount}</span>
 						</li>
 					</ul>
 					
