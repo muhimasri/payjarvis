@@ -120,3 +120,7 @@ export const LANGUAGE = {
     "LANGUAGE_MENU": ["ENGLISH", "FRENCH"],
     "LANGUAGE_DEFAULT": "ENGLISH"
 }
+
+export const ENV = {
+    "domain": "http://localhost:3000"
+}

@@ -1,4 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
+import {ENV} from '../../config';
+
 export const sendPayment = (data, history) => (dispatch) => {
 
     //this dispatch will use when api call starts
@@ -6,7 +8,7 @@ export const sendPayment = (data, history) => (dispatch) => {
         type: 'SEND_PAYMENT',
       })
 
-    const url = 'http://localhost:3000/charge';
+    const url = `${ENV.domain}/charge`;
     const id = data.ticketId;
     axios.post(url,data)
       .then(function (response) {        

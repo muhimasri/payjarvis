@@ -1,6 +1,8 @@
-import axios from 'axios'
+import axios from 'axios';
+import {ENV} from '../../config';
+
 export const addDetail = (data) => (dispatch) => {
-    const url = `http://localhost:3000/api/tickets/${data.id}`;
+    const url = `${ENV.domain}/api/tickets/${data.id}`;
     //this dispatch will use when api call starts
     delete data.error;
     delete data.id
