@@ -10,9 +10,9 @@ class ConfirmDetailResult extends React.Component{
 		const { payments, language_text, detail_data } = this.props;
 		const details= detail_data.response_success;
 		const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
-		const serviceCharge = parseInt(detail_data.response_success.administrativePenaltyAmount * 0.029, 10);
-		const totalAmount = parseInt(detail_data.response_success.administrativePenaltyAmount, 10)
-		+ serviceCharge + 0.3;
+		const serviceCharge = Number(detail_data.response_success.administrativePenaltyAmount * 0.029).toFixed(2);;
+		detail_data.response_success.total = Number(detail_data.response_success.administrativePenaltyAmount)
+		+ Number(serviceCharge) + 0.3;
 		
 		return(
             <React.Fragment>
@@ -60,7 +60,7 @@ class ConfirmDetailResult extends React.Component{
 
 					<ul className="border-0">
 						<li>{payments.TOTAL}
-							<span>${totalAmount}</span>
+							<span>${detail_data.response_success.total}</span>
 						</li>
 					</ul>
 					

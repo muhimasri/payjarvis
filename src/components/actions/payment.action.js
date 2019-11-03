@@ -7,13 +7,14 @@ export const sendPayment = (data, history) => (dispatch) => {
       })
 
     const url = 'http://localhost:3000/charge';
+    const id = data.ticketId;
     axios.post(url,data)
       .then(function (response) {        
         dispatch( {
             type: 'SEND_PAYMENT_SUCCESS',
             payload:response.data.data
           })
-          history.push('/payment-receipt')
+          history.push(`/payment-receipt/${id}`);
       })
       .catch(function (error) {
         dispatch( {

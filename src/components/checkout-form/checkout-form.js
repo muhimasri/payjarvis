@@ -36,6 +36,7 @@ class CheckoutForm extends React.Component {
   };
 
   componentWillMount = () => {
+    const { detail_data, history} = this.props;
     this.state.deviceType = Utils.getDeviceOperatingSystem();
     if (this.state.deviceType !== null) {
       const paymentRequest = this.props.stripe.paymentRequest({
@@ -43,16 +44,15 @@ class CheckoutForm extends React.Component {
         currency: 'cad',
         total: {
           label: 'Total Amount',
-          amount: 1000
+          amount: detail_data.response_success.total
         },
+        requestPayerEmail: true
       });
   
       paymentRequest.on('token', ({complete, token, ...data}) => {
-        alert(token.id);
-        const { detail_data, history} = this.props;
         const updateObj = {
           token: token.id,
-          amount: detail_data.response_success.total || 1000,
+          amount: detail_data.response_success.total,
           ticketId: detail_data.response_success.ticketId
         }
         this.props.sendPayment(updateObj,history)

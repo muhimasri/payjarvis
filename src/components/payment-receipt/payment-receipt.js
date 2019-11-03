@@ -5,11 +5,24 @@ import {sendPaymentReceipt, updateDisplay, updateSubscribe} from '../actions/rec
 import withF from '../HOC/withF';
 import BoyImg from './boy.png';
 import Loading from '../loader';
+import {getTicketDetails} from '../../services/ticket';
 
 class Payment extends React.Component{
 
     state={
-         email:''   
+         email:'',
+         details: {}
+    }
+
+    componentWillMount = () => {
+        const {match} = this.props;
+        if(match.params.id) {
+            this.getTicket(match.params.id);
+        }
+    }
+
+    async getTicket(id) {
+        this.setState({details: await getTicketDetails(id)});
     }
 
     render(){
@@ -20,14 +33,14 @@ class Payment extends React.Component{
             <React.Fragment>
                 <div className="detail-data payment-title">
                     <img src={BoyImg} className="main-img" alt="Banner"/>
-                    <h4 className="site--main">Please wait...</h4>
+                    {/* <h4 className="site--main">Please wait...</h4> */}
                     <div className="payment-details">
                         <ul>
                             <li> <span className="disable-font">{paymentText.VIOLATION_NOTICE}</span>
-                                <span>PB465465</span>
+                                <span>{this.state.details.violationNoticeNumber}</span>
                             </li>
                             <li> <span className="disable-font">{paymentText.PAYMENT_AMOUNT}</span>
-                                <span>$89.50</span>
+                                <span>${this.state.details.paidAmount}</span>
                             </li>
                         </ul>
                     </div>
@@ -42,7 +55,7 @@ class Payment extends React.Component{
                         </ul> */}
                         <ul>
                             <li> <span className="disable-font">{paymentText.PAYMENT_DATE}</span> 
-                                <span>13 September 2019</span>
+                                <span>{this.state.details.paidDate}</span>
                             </li>
                             <li> <span className="disable-font">{paymentText.REFERENCE_NO}</span>
                                 <span>919823489</span>

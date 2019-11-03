@@ -1,7 +1,4 @@
-export const getTicketDetails = () => {
-    return fetch(`assets/json/ticket-details.json`)
-        .then(response => response.json())
-}
+import axios from 'axios';
 
 export const uploadTicket = (file) => {
     const url = 'http://localhost:3000/api/tickets';
@@ -18,4 +15,11 @@ export const uploadTicket = (file) => {
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+export const getTicketDetails = (id) => {
+    const url = `http://localhost:3000/api/tickets/${id}`;
+    return axios.get(url).then(res => {
+      return res.data.data;
+    });
 }
