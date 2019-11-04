@@ -9,7 +9,6 @@ class ConfirmDetailForm extends React.Component{
         VIOLATION_NOTICE: '',
         PLATE_NUMBER: '',
         PENALTY_AMOUNT: '',
-        EMAIL: '',
         error: []
     }
 
@@ -45,8 +44,6 @@ class ConfirmDetailForm extends React.Component{
             error.push('PLATE_NUMBER')
         if(PENALTY_AMOUNT === '')
             error.push('PENALTY_AMOUNT')
-        if(EMAIL === '')
-            error.push('EMAIL')
         this.setState({ error });
         if(error.length > 0) return;
         this.props.addDetail({
@@ -89,9 +86,6 @@ class ConfirmDetailForm extends React.Component{
                     <br/>
                     <label htmlFor="PENALTY_AMOUNT">{fields.PENALTY_AMOUNT}</label><br/>
                     <input className={error.includes('PENALTY_AMOUNT') && 'error-field'} onChange={this.handleChange.bind(this)} value={PENALTY_AMOUNT} type="text" name="PENALTY_AMOUNT" id="PENALTY_AMOUNT" />
-                    <br/>
-                    <label htmlFor="EMAIL">{fields.EMAIL}</label><br/>
-                    <input className={error.includes('EMAIL') && 'error-field'} onChange={this.handleChange.bind(this)} type="text" name="EMAIL" id="EMAIL" />
                     <br/>
                 </div>
                 <div className="sub-btn">

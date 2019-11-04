@@ -12,7 +12,7 @@ export const getImageDataById = (id, history) => dispatch => {
         payload:response.data.data
       })
       if(response.data.data.isPaid)
-        history.push('/payment-receipt')
+        history.push(`/payment-receipt/${response.data.data.ticketId}`)
     })
     .catch(function (error) {
       dispatch( {
