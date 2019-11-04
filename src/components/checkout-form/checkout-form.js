@@ -35,39 +35,50 @@ class CheckoutForm extends React.Component {
     showCardPayment:false
   };
 
-  componentWillMount = () => {
-    const { detail_data, history} = this.props;
-    this.state.deviceType = Utils.getDeviceOperatingSystem();
-    if (this.state.deviceType !== null) {
-      const paymentRequest = this.props.stripe.paymentRequest({
-        country: 'CA',
-        currency: 'cad',
-        total: {
-          label: 'Total Amount',
-          amount: detail_data.response_success.total
-        },
-        requestPayerEmail: true
-      });
-  
-      paymentRequest.on('token', ({complete, token, ...data}) => {
-        const updateObj = {
-          token: token.id,
-          amount: detail_data.response_success.total,
-          ticketId: detail_data.response_success.ticketId
-        }
-        this.props.sendPayment(updateObj,history)
-        // console.log('Received Stripe token: ', token);
-        // console.log('Received customer information: ', data);
-        // complete('success');
-      });
-  
-      paymentRequest.canMakePayment().then((result) => {
-        this.setState({canMakePayment: !!result});
-      });
+  error = {
+    cardNumber: false,
+    cardExpiry: false,
+    cardCvc: false,
+    email: false
+  };
 
-      this.state.paymentRequest = paymentRequest;
-    } else {
-      this.state.showCardPayment = true;
+  componentWillMount = () => {
+    try {
+      const { detail_data, history} = this.props;
+      this.state.deviceType = Utils.getDeviceOperatingSystem();
+      if (this.state.deviceType !== null) {
+        const paymentRequest = this.props.stripe.paymentRequest({
+          country: 'CA',
+          currency: 'cad',
+          total: {
+            label: 'Total Amount',
+            amount: detail_data.response_success.total
+          },
+          requestPayerEmail: true
+        });
+    
+        paymentRequest.on('token', ({complete, token, ...data}) => {
+          const updateObj = {
+            token: token.id,
+            amount: detail_data.response_success.total,
+            ticketId: detail_data.response_success.ticketId
+          }
+          this.props.sendPayment(updateObj,history)
+          // console.log('Received Stripe token: ', token);
+          // console.log('Received customer information: ', data);
+          // complete('success');
+        });
+    
+        paymentRequest.canMakePayment().then((result) => {
+          this.setState({canMakePayment: !!result});
+        });
+
+        this.state.paymentRequest = paymentRequest;
+      } else {
+        this.state.showCardPayment = true;
+      }
+    } catch (err) {
+
     }
   }
 
@@ -75,18 +86,23 @@ class CheckoutForm extends React.Component {
     this.state.paymentRequest.show();
   }
 
-  handleChange = ({error}) => {
-    if (error) {
-      this.setState({errorMessage: error.message});
+  handleChange = (e) => {
+    if (e.currentTarget) {
+      this.error[e.currentTarget.name] = e.currentTarget.validity.valid;
+      if (!e.currentTarget.validity.valid) {
+        // this.setState({errorMessage: 'Invalid Email'});
+      }
+    } else {
+      this.error[e.elementType] = e.complete;
+      if (e.error) {
+        this.setState({errorMessage: e.error.message});
+      }
     }
-  //   this.setState({
-  //     [event.target.name]:event.target.value
-  // });
   };
 
   handleSubmit = async() => {
     const { detail_data, history} = this.props;
-    if (this.props.stripe) {
+    if (this.props.stripe && !Object.values(this.error).includes(false)) {
       let {token} = await this.props.stripe.createToken({name: "Name"});
       const updateObj = {
         token: token.id,
@@ -154,6 +170,11 @@ class CheckoutForm extends React.Component {
                     <div className="txt-input">
                     <CardCVCElement {...createOptions()} onChange={this.handleChange.bind(this)} />
                     </div>
+                </div>
+                <div className="form-field">
+                    <label htmlFor="EMAIL">{card_field.EMAIL}</label><br/>
+                    <input className="txt-input" onChange={this.handleChange.bind(this)} type="email" required name="email" />
+                    <br/>
                 </div>
                 <div className="error" role="alert">
                 {this.state.errorMessage}
