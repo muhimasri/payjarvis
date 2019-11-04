@@ -36,38 +36,43 @@ class CheckoutForm extends React.Component {
   };
 
   componentWillMount = () => {
-    const { detail_data, history} = this.props;
-    this.state.deviceType = Utils.getDeviceOperatingSystem();
-    if (this.state.deviceType !== null) {
-      const paymentRequest = this.props.stripe.paymentRequest({
-        country: 'CA',
-        currency: 'cad',
-        total: {
-          label: 'Total Amount',
-          amount: detail_data.response_success.total
-        },
-        requestPayerEmail: true
-      });
+    try {
+      const { detail_data, history} = this.props;
+      this.state.deviceType = Utils.getDeviceOperatingSystem();
+      if (this.state.deviceType !== null) {
+        const paymentRequest = this.props.stripe.paymentRequest({
+          country: 'CA',
+          currency: 'cad',
+          total: {
+            label: 'Total Amount',
+            amount: detail_data.response_success.total * 100
+          },
+          requestPayerEmail: true
+        });
+    
+        paymentRequest.on('token', ({complete, token, ...data}) => {
+          const updateObj = {
+            token: token.id,
+            amount: detail_data.response_success.total,
+            ticketId: detail_data.response_success.ticketId,
+            data
+          }
+          this.props.sendPayment(updateObj,history)
+          // console.log('Received Stripe token: ', token);
+          // console.log('Received customer information: ', data);
+          // complete('success');
+        });
+    
+        paymentRequest.canMakePayment().then((result) => {
+          this.setState({canMakePayment: !!result});
+        });
   
-      paymentRequest.on('token', ({complete, token, ...data}) => {
-        const updateObj = {
-          token: token.id,
-          amount: detail_data.response_success.total,
-          ticketId: detail_data.response_success.ticketId
-        }
-        this.props.sendPayment(updateObj,history)
-        // console.log('Received Stripe token: ', token);
-        // console.log('Received customer information: ', data);
-        // complete('success');
-      });
-  
-      paymentRequest.canMakePayment().then((result) => {
-        this.setState({canMakePayment: !!result});
-      });
-
-      this.state.paymentRequest = paymentRequest;
-    } else {
-      this.state.showCardPayment = true;
+        this.state.paymentRequest = paymentRequest;
+      } else {
+        this.state.showCardPayment = true;
+      }
+    } catch(err) {
+      console.log(err);
     }
   }
 
