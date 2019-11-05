@@ -134,7 +134,13 @@ h4.site--main {
     margin-bottom: 15px;
 }
 
-.disable-font{
-    color: rgba(27, 53, 53, 0.4) !important;
-    text-align: center !important;
+.confirm-text {
+    text-align: center;
+    h3 {
+        color: #26981b;
+        margin-bottom: 13px !important;
+    }
+    h5 {
+        color: rgba(27, 53, 53, 0.4);
+    }
 }

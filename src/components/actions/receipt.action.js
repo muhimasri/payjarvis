@@ -33,8 +33,8 @@ export const updateSubscribe = (userId) => (dispatch) => {
     dispatch({
         type: 'UPDATE_SUBSCRIBE',
     })
-    const url = `${ENV.domain}/charge/${userId}`;
-    axios.post(url, {subscription: true})
+    const url = `${ENV.domain}/api/users/${userId}`;
+    axios.put(url, {subscribed: true})
       .then(function (response) {        
         // dispatch( {
         //     type: 'SEND_PAYMENT_SUCCESS',

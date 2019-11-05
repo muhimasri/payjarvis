@@ -51,7 +51,7 @@ export const LANGUAGE = {
             },
             "SUBSCRIBE_POPUP":{
                 "TEXT1":"We are working on making your bill payments easier, would you like us to email you once we expand our service?",
-                "TEXT2":"Email has been sent to your mail!",
+                "TEXT2":"You are now subscribed!",
                 "TEXT3":"We are working on making your bill payments easier!",
                 "BTN1":"Yes, please",
                 "BTN2":"No, thanks",
