@@ -31,6 +31,7 @@ const createOptions = () => {
 class CheckoutForm extends React.Component {
   state = {
     errorMessage: '',
+    emailValue: '',
     canMakePayment: false,
     showCardPayment:false
   };
@@ -62,7 +63,7 @@ class CheckoutForm extends React.Component {
             token: token.id,
             amount: detail_data.response_success.total,
             ticketId: detail_data.response_success.ticketId,
-            data
+            email: data.payerEmail
           }
           this.props.sendPayment(updateObj,history)
           // console.log('Received Stripe token: ', token);
@@ -89,6 +90,7 @@ class CheckoutForm extends React.Component {
 
   handleChange = (e) => {
     if (e.currentTarget) {
+      this.setState({emailValue: e.currentTarget.value});
       this.error[e.currentTarget.name] = e.currentTarget.validity.valid;
       if (!e.currentTarget.validity.valid) {
         // this.setState({errorMessage: 'Invalid Email'});
@@ -107,10 +109,11 @@ class CheckoutForm extends React.Component {
       let {token} = await this.props.stripe.createToken({name: "Name"});
       const updateObj = {
         token: token.id,
-        amount: detail_data.response_success.total || '50',
-        ticketId: detail_data.response_success.ticketId
+        amount: detail_data.response_success.total,
+        ticketId: detail_data.response_success.ticketId,
+        email: this.state.emailValue
       }
-      this.props.sendPayment(updateObj,history)
+      this.props.sendPayment(updateObj,history);
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
@@ -125,6 +128,7 @@ class CheckoutForm extends React.Component {
   render() {
     const { payment, language_text } = this.props;
     const card_field = language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
+    const field = language_text.CONFIRM_DETAILS_COMPONENT.FIELDS;
     const payments = language_text.CONFIRM_DETAILS_COMPONENT.PAYMENTS;
 		let imgText;
 		if(this.state.deviceType === 'ios')
@@ -173,8 +177,9 @@ class CheckoutForm extends React.Component {
                     </div>
                 </div>
                 <div className="form-field">
-                    <label htmlFor="EMAIL">{card_field.EMAIL}</label><br/>
-                    <input className="txt-input" onChange={this.handleChange.bind(this)} type="email" required name="email" />
+                    <label htmlFor="EMAIL">{field.EMAIL}</label><br/>
+                    <input className="txt-input" onChange={this.handleChange.bind(this)} type="email"
+                    required name="email" value={this.state.emailValue}/>
                     <br/>
                 </div>
                 <div className="error" role="alert">

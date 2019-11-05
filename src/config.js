@@ -122,5 +122,5 @@ export const LANGUAGE = {
 }
 
 export const ENV = {
-    "domain": "https://b1804737.ngrok.io"
+    "domain": "http://localhost:3000"
 }
