@@ -1,3 +1,6 @@
+import axios from 'axios';
+import {ENV} from '../../config';
+
 export const sendPaymentReceipt = (email) => (dispatch) => {
     //this dispatch will use when api call starts
     dispatch({
@@ -26,8 +29,22 @@ export const updateDisplay = (val) => (dispatch) => {
     })
 }
 
-export const updateSubscribe = () => (dispatch) => {
+export const updateSubscribe = (userId) => (dispatch) => {
     dispatch({
         type: 'UPDATE_SUBSCRIBE',
     })
+    const url = `${ENV.domain}/charge/${userId}`;
+    axios.post(url, {subscription: true})
+      .then(function (response) {        
+        // dispatch( {
+        //     type: 'SEND_PAYMENT_SUCCESS',
+        //     payload:response.data.data
+        //   })
+      })
+      .catch(function (error) {
+        // dispatch( {
+        //     type: 'SEND_PAYMENT_FAILURE',
+        //     payload:error
+        //   })
+      });
 }
