@@ -73,6 +73,9 @@ class CheckoutForm extends React.Component {
     
         paymentRequest.canMakePayment().then((result) => {
           this.setState({canMakePayment: !!result});
+          if (!this.state.canMakePayment) {
+            this.setState({showCardPayment: true});
+          }
         });
   
         this.state.paymentRequest = paymentRequest;

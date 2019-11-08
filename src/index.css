@@ -1,5 +1,6 @@
 body{
   font-family: 'Roboto', sans-serif;
+  background: #f3f3f3;
 }
 
 *{
@@ -7,11 +8,18 @@ body{
   padding: 0;
 }
 
+.cotainer-outer {
+  width: 100%;
+  margin: auto;
+  padding: 15px 0;
+  max-width: 500px;
+  background: #fff;
+}
+
 .cotainer-inner {
   width: 100%;
-  margin: 15px auto;
-  max-width: 310px;
-  box-shadow: 0px 0px 6px -4px #000;
-  padding: 15px;
+  /* padding: 0 15px; */
+  max-width: 375px;
+  margin: auto;
 }
 

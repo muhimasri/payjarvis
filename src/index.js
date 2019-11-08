@@ -31,14 +31,16 @@ const routing = (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <Router>
-        <div className="cotainer-inner">
-          <Route exact path="/" component={App} />
-          <Route path="/ticket-details" component={TicketDetails} />
-          <Route path="/payment-method" component={PaymentMethod} />
-          <Route path="/ticket-upload" component={TicketUpload} />
-          <Route path="/confirm-details/:id" component={ConfirmDetails} />
-          <Route path="/payment-receipt/:id" component={Payment} />
-          <Route path="/paid-receipt" component={Paid} />
+        <div className="cotainer-outer">
+          <div className="cotainer-inner">
+            <Route exact path="/" component={App} />
+            <Route path="/ticket-details" component={TicketDetails} />
+            <Route path="/payment-method" component={PaymentMethod} />
+            <Route path="/ticket-upload" component={TicketUpload} />
+            <Route path="/confirm-details/:id" component={ConfirmDetails} />
+            <Route path="/payment-receipt/:id" component={Payment} />
+            <Route path="/paid-receipt" component={Paid} />
+          </div>
         </div>
       </Router>
     </ThemeProvider>
