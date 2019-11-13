@@ -122,6 +122,6 @@ export const LANGUAGE = {
 }
 
 export const ENV = {
-    "domain": "http://localhost:3000"
-    // "domain": "http://testapp-env.x5zf29xh2j.us-west-2.elasticbeanstalk.com"
+    // "server": "http://localhost:3000"
+    "server": "https://api.payjarvis.com"
 }

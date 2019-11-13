@@ -33,7 +33,7 @@ export const updateSubscribe = (userId) => (dispatch) => {
     dispatch({
         type: 'UPDATE_SUBSCRIBE',
     })
-    const url = `${ENV.domain}/api/users/${userId}`;
+    const url = `${ENV.server}/users/${userId}`;
     axios.put(url, {subscribed: true})
       .then(function (response) {        
         // dispatch( {

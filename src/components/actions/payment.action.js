@@ -8,7 +8,7 @@ export const sendPayment = (data, history) => (dispatch) => {
         type: 'SEND_PAYMENT',
       })
 
-    const url = `${ENV.domain}/charge`;
+    const url = `${ENV.server}/charge`;
     const id = data.ticketId;
     axios.post(url,data)
       .then(function (response) {        

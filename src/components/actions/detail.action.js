@@ -2,7 +2,7 @@ import axios from 'axios';
 import {ENV} from '../../config';
 
 export const addDetail = (data) => (dispatch) => {
-    const url = `${ENV.domain}/api/tickets/${data.id}`;
+    const url = `${ENV.server}/tickets/${data.id}`;
     //this dispatch will use when api call starts
     delete data.error;
     delete data.id

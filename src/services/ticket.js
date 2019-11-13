@@ -2,7 +2,7 @@ import axios from 'axios';
 import {ENV} from '../config';
 
 export const uploadTicket = (file) => {
-    const url = `${ENV.domain}/api/tickets`;
+    const url = `${ENV.server}/tickets`;
     try {
         const formData = new FormData();
         formData.append('file', file[0]);
@@ -19,7 +19,7 @@ export const uploadTicket = (file) => {
 }
 
 export const getTicketDetails = (id) => {
-    const url = `${ENV.domain}/api/tickets/${id}`;
+    const url = `${ENV.server}/tickets/${id}`;
     return axios.get(url).then(res => {
       return res.data.data;
     });
