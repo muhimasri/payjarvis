@@ -10,9 +10,11 @@ class ConfirmDetailResult extends React.Component{
 		const { payments, language_text, detail_data } = this.props;
 		const details= detail_data.response_success;
 		const card_field=language_text.CONFIRM_DETAILS_COMPONENT.CARD_FIELDS;
-		const serviceCharge = Number(detail_data.response_success.administrativePenaltyAmount * 0.1).toFixed(2);
-		detail_data.response_success.total = Number(detail_data.response_success.administrativePenaltyAmount)
-		+ Number(serviceCharge);
+		const serviceCharge = detail_data.response_success.processingFee.toFixed(2); 
+		const addressSearchFee = detail_data.response_success.addressSearchFee.toFixed(2);
+		const lateFee = detail_data.response_success.lateFee.toFixed(2);
+		const totalAmount = detail_data.response_success.totalAmount.toFixed(2);
+		const penaltyAmount = detail_data.response_success.administrativePenaltyAmount.toFixed(2);
 		
 		return(
             <React.Fragment>
@@ -25,22 +27,28 @@ class ConfirmDetailResult extends React.Component{
 								<img src={Info} alt="Info"/>
      					 	</Tooltip>
 							  <span>$</span>
-							<span>{details.administrativePenaltyAmount}</span>
+							<span>{penaltyAmount}</span>
 						</li>
-						{/* <li>{payments.ADDRESS_SEARCH_FEE}
-							<Tooltip title={payments.ADDRESS_SEARCH_FEE}>
-								<img src={Info} alt="Info"/>
-							</Tooltip>
-							<span>$</span>
-							<span>12.00</span>
-						</li>
-						<li>{payments.LATE_PAYMENT_FEE}
-							<Tooltip title={payments.LATE_PAYMENT_FEE}>
-								<img src={Info} alt="Info"/>
-     					 	</Tooltip>
-							<span>$</span>
-							<span>0.00</span>
-						</li> */}
+						{
+							detail_data.response_success.addressSearchFee > 0 &&
+							<li>{payments.ADDRESS_SEARCH_FEE}
+								<Tooltip title={payments.ADDRESS_SEARCH_FEE}>
+									<img src={Info} alt="Info"/>
+								</Tooltip>
+								<span>$</span>
+								<span>{addressSearchFee}</span>
+							</li>
+						}
+						{
+							detail_data.response_success.lateFee > 0 &&
+							<li>{payments.LATE_PAYMENT_FEE}
+								<Tooltip title={payments.LATE_PAYMENT_FEE}>
+									<img src={Info} alt="Info"/>
+								</Tooltip>
+								<span>$</span>
+								<span>{lateFee}</span>
+							</li>
+						}
 						<li className="disable-font">{payments.SERVICE_CHARGE}
 							<Tooltip title={payments.SERVICE_CHARGE}>
 								<img src={Info} alt="Info"/>
@@ -60,7 +68,7 @@ class ConfirmDetailResult extends React.Component{
 
 					<ul className="border-0">
 						<li>{payments.TOTAL}
-							<span>${detail_data.response_success.total}</span>
+							<span>${totalAmount}</span>
 						</li>
 					</ul>
 					

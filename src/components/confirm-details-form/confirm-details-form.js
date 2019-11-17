@@ -1,6 +1,7 @@
 import './confirm-details-form.scss';
 import ModalImage from "react-modal-image";
 import React from 'react';
+const moment = require('moment');
 
 class ConfirmDetailForm extends React.Component{
     
@@ -44,16 +45,43 @@ class ConfirmDetailForm extends React.Component{
             error.push('PLATE_NUMBER')
         if(PENALTY_AMOUNT === '')
             error.push('PENALTY_AMOUNT')
+        
+        const dateValidation = this.violationDateValidation(); 
+        if (dateValidation === 'DATE_OVERDUE') {
+            error.push('DATE_OVERDUE');
+        }
         this.setState({ error });
         if(error.length > 0) return;
+        const addressSearchFee = dateValidation === 'ADDRESS_SEARCH_FEE' || dateValidation === 'LATE_FEE' ? 12 : 0;
+        const lateFee = dateValidation === 'LATE_FEE' ? 25 : 0;
+        const totalAmount = Number(PENALTY_AMOUNT) + addressSearchFee + lateFee;
+        const processingFee = (totalAmount * 0.1).toFixed(2);
         this.props.addDetail({
             id: this.props.id, 
             dateOfViolation:DATE_OF_VIOLATION,
             violationNoticeNumber:VIOLATION_NOTICE,
             plateNumber:PLATE_NUMBER,
             administrativePenaltyAmount:PENALTY_AMOUNT,
+            addressSearchFee,
+            lateFee,
+            processingFee,
+            totalAmount,
             email:EMAIL
         })
+    }
+
+    violationDateValidation() {
+        const todayDate = moment();
+        const violationDate = moment(this.state.DATE_OF_VIOLATION);
+        const diffDays = todayDate.diff(violationDate, 'days');
+        if (diffDays >= 16 && diffDays <= 30) {
+            return 'ADDRESS_SEARCH_FEE';
+        } else if (diffDays >= 31 && diffDays < 60) {
+            return 'LATE_FEE';
+        } else if (diffDays >= 60) {
+            return 'DATE_OVERDUE';
+        }
+        return true;
     }
 
     render(){
@@ -75,9 +103,12 @@ class ConfirmDetailForm extends React.Component{
                     <label htmlFor="DATE_OF_VIOLATION">{fields.DATE_OF_VIOLATION}</label><br/>
                     <input className={error.includes('DATE_OF_VIOLATION') && 'error-field'} onChange={this.handleChange.bind(this)} value={DATE_OF_VIOLATION} type="date" name="DATE_OF_VIOLATION" id="DATE_OF_VIOLATION" />
                     <br/>
-                    {/* <div className="error-message">
-                        Date of violation is more than 60 days past due. A payment will have to be made at a <span className="text-blue">Service Ontario location.</span>
-					</div> */}
+                    {
+                        error.includes('DATE_OVERDUE') &&
+                        <div className="error-message">
+                            Date of violation is more than 60 days past due. A payment will have to be made at a <span className="text-blue">Service Ontario location.</span>
+                        </div>
+                    }
                     <label htmlFor="VIOLATION_NOTICE">{fields.VIOLATION_NOTICE}</label><br/>
                     <input className={error.includes('VIOLATION_NOTICE') && 'error-field'} onChange={this.handleChange.bind(this)} value={VIOLATION_NOTICE} type="text" name="VIOLATION_NOTICE" id="VIOLATION_NOTICE" />
                     <br/>

@@ -22,14 +22,19 @@ class Payment extends React.Component{
     }
 
     async getTicket(id) {
-        this.setState({details: await getTicketDetails(id)});
+        const details = await getTicketDetails(id);
+        details.processingFeeFixed = details.processingFee.toFixed(2); 
+		details.addressSearchFeeFixed = details.addressSearchFee.toFixed(2);
+		details.lateFeeFixed = details.lateFee.toFixed(2);
+		details.totalAmountFixed = details.totalAmount.toFixed(2);
+		details.penaltyAmountFixed = details.administrativePenaltyAmount.toFixed(2);
+        this.setState({details});
     }
 
     render(){
         const { language_text, receipt } = this.props;
         const paymentText=language_text.PAYMENT;
         const popupText=language_text.SUBSCRIBE_POPUP;
-        const serviceChange = Number(this.state.details.paidAmount) - Number(this.state.details.administrativePenaltyAmount);
         return(
             <React.Fragment>
                 <div className="detail-data payment-title container-inner">
@@ -59,17 +64,29 @@ class Payment extends React.Component{
                                 <span>{this.state.details.paidDate}</span>
                             </li>
                             <li> <span className="disable-font">{paymentText.PENALTY_AMOUNT}</span>
-                                <span>${this.state.details.administrativePenaltyAmount}</span>
+                                <span>${this.state.details.penaltyAmountFixed}</span>
                             </li>
+                            {
+                                this.state.details.addressSearchFee > 0 &&
+                                <li> <span className="disable-font">{paymentText.ADDRESS_SEARCH_FEE}</span>
+                                    <span>${this.state.details.addressSearchFeeFixed}</span>
+                                </li>
+                            }
+                            {
+                                this.state.details.lateFee > 0 &&
+                                <li> <span className="disable-font">{paymentText.LATE_PAYMENT_FEE}</span>
+                                    <span>${this.state.details.lateFeeFixed}</span>
+                                </li>
+                            }
                             <li> <span className="disable-font">{paymentText.SERVICE_CHARGE}</span>
-                                <span>${serviceChange}</span>
+                                <span>${this.state.details.processingFeeFixed}</span>
                             </li>
                         </ul>
                     </div>
                     <div className="payment-details">
                         <ul className="no-border">
                             <li> <span className="disable-font">{paymentText.PAYMENT_AMOUNT}</span>
-                                <span>${this.state.details.paidAmount}</span>
+                                <span>${this.state.details.totalAmountFixed}</span>
                             </li>
                         </ul>
                     </div>

@@ -19,6 +19,8 @@ export const LANGUAGE = {
                     "VIOLATION_NOTICE":"Violation Notice Number",
                     "PLATE_NUMBER":"Plate Number",
                     "PENALTY_AMOUNT":"Administrative Penalty",
+                    "ADDRESS_SEARCH_FEE":"Address Search Fee",
+                    "LATE_PAYMENT_FEE":"Late Payment Fee",
                     "EMAIL":"E-mail"
                 },
                 "PAYMENTS":{
@@ -44,6 +46,8 @@ export const LANGUAGE = {
                 "PLATE_NUMBER":"Plate Number",
                 "SERVICE_CHARGE":"Processing Fees",
                 "PENALTY_AMOUNT":"Administrative Penalty",
+                "ADDRESS_SEARCH_FEE":"Address Search Fee",
+                "LATE_PAYMENT_FEE":"Late Payment Fee",
                 "WAITING_FOR":"Waiting for",
                 "PAYMENT_DATE":"Payment date",
                 "REFERENCE_NO":"Reference Number",

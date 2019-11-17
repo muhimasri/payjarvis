@@ -53,7 +53,7 @@ class CheckoutForm extends React.Component {
           currency: 'cad',
           total: {
             label: 'Total Amount',
-            amount: detail_data.response_success.total * 100
+            amount: detail_data.response_success.totalAmount * 100
           },
           requestPayerEmail: true
         });
@@ -61,7 +61,7 @@ class CheckoutForm extends React.Component {
         paymentRequest.on('token', ({complete, token, ...data}) => {
           const updateObj = {
             token: token.id,
-            amount: detail_data.response_success.total,
+            amount: detail_data.response_success.totalAmount,
             ticketId: detail_data.response_success.ticketId,
             email: data.payerEmail
           }
@@ -112,7 +112,7 @@ class CheckoutForm extends React.Component {
       let {token} = await this.props.stripe.createToken({name: "Name"});
       const updateObj = {
         token: token.id,
-        amount: detail_data.response_success.total,
+        amount: detail_data.response_success.totalAmount,
         ticketId: detail_data.response_success.ticketId,
         email: this.state.emailValue
       }
