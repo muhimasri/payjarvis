@@ -10,7 +10,7 @@ class Footer extends React.Component {
               <p>{language_text.FOOTER_TEXT}</p>
               <div className="condition-link">
                   {language_text.FOOTER_LINKS.map((o, i) => (
-                      <a href="#" key={i}>{o}</a>
+                      <a href={o.link} key={i} target="_blank">{o.text}</a>
                   ))}
               </div>
               <ul>

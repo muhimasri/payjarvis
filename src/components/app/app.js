@@ -13,21 +13,22 @@ class App extends React.Component {
   render() {
     const { language_text, history, language, all_language,image } = this.props;
     return (
-      <div className="Header-section">
-        <select className="upload-dropdown" value={language} onChange={(e) => this.props.updateLanguage(e.target.value)}>
+      <div className="Header-section container-inner">
+        {/* <select className="upload-dropdown" value={language} onChange={(e) => this.props.updateLanguage(e.target.value)}>
             {all_language.map((o, i) => (
                 <option key={i} value={o}>{o}</option>
             ))}
-        </select>
+        </select> */}
         <img src={headerImg} className="main-img"/>
         <div className="Header-content">
-          <h2>{language_text.TEXT1} <br /> <strong>{language_text.TEXT2}</strong></h2>
-          <h4>{language_text.HOME_COMPONENT.TEXT}</h4>
+          <div className="text-1">{language_text.TEXT1}</div>
+          <div className="text-2">{language_text.TEXT2}</div>
+          <div className="text-3">{language_text.HOME_COMPONENT.TEXT}</div>
           <p>{language_text.HOME_COMPONENT.LABEL}</p>
         </div>
         
-        <div className="upload--button">
-          <h3>{language_text.HOME_COMPONENT.UPLOAD_BUTTON_TEXT}</h3>
+        <div className="upload--button" onClick={this.triggerInputFile}>
+          <div className="upload-text">{language_text.HOME_COMPONENT.UPLOAD_BUTTON_TEXT}</div>
           <p>{language_text.HOME_COMPONENT.UPLOAD_BUTTON_LABEL}</p>
           <React.Fragment>
             {/* <label className="upload--btn">+ 
@@ -35,7 +36,7 @@ class App extends React.Component {
             </label> */}
 
             <label htmlFor="image"> 
-            <img className="btn-cursor" src={plusImg} onClick={this.triggerInputFile} />
+            <img className="btn-cursor" src={plusImg} />
             {/* <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadImage(e.target.files, history, URL.createObjectURL(e.target.files[0]))} /> */}
             <input type="file" ref={fileInput => this.fileInput = fileInput} name="image" onChange={(e) => this.props.uploadTicket(e.target.files, history)} />  
             </label>

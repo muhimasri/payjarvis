@@ -31,7 +31,7 @@ class ConfirmTicket extends React.Component{
         const payments = language_text.CONFIRM_DETAILS_COMPONENT.PAYMENTS
 
         return(
-            <div className="detail-data">
+            <div className="detail-data container-inner">
                 {!detail_data.displayForm && 
                 // <input type="button" className="back-btn" value=" Back" onClick={this.handleCallBack} />
                     <a href="#" onClick={this.handleCallBack} className="back-link"><img style={{marginRight: '8px'}} src={Back}></img>Back</a>

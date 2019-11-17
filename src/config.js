@@ -1,15 +1,15 @@
 export const LANGUAGE = {
     "LANGUAGE_TEXT": [
         {
-            "TEXT1": "Hi",
+            "TEXT1": "Hi,",
             "TEXT2": "It's Jarvis!",
-            "FOOTER_TEXT": "Made in Toronto by Onebill",
-            "FOOTER_LINKS": ["Privacy & Terms", "Contact Us"],
+            "FOOTER_TEXT": "Made in Toronto",
+            "FOOTER_LINKS": [{"text": "Privacy & Terms", "link": "https://payjarvis-public.s3.amazonaws.com/Website+Terms+%26+Privacy+v16112019.pdf"}, {"text": "Contact Us", "link": "mailto:support@payjarvis.com?subject=Payjarvis Support Message"}],
             "HOME_COMPONENT": {
-                "TEXT": "Your parking ticket butler",
-                "LABEL": "I'll help you settle this ticket quickly to get going with your day. You can start by uploading a photo of your ticket.",
+                "TEXT": "Toronto’s parking ticket butler.",
+                "LABEL": "I’ll help you settle this parking ticket quickly to get on with your day.",
                 "UPLOAD_BUTTON_TEXT": "Upload Your Ticket",
-                "UPLOAD_BUTTON_LABEL": "Your can upload a ticket by importing or scanning with your camera"
+                "UPLOAD_BUTTON_LABEL": "You can upload a ticket by taking a photo with your camera or importing an image from your library."
             },
             "CONFIRM_DETAILS_COMPONENT":{
                 "LABEL":"Confirm Details",
@@ -18,14 +18,14 @@ export const LANGUAGE = {
                     "DATE_OF_VIOLATION":"Date of Violation",
                     "VIOLATION_NOTICE":"Violation Notice Number",
                     "PLATE_NUMBER":"Plate Number",
-                    "PENALTY_AMOUNT":"Administrative Penalty Amount",
+                    "PENALTY_AMOUNT":"Administrative Penalty",
                     "EMAIL":"E-mail"
                 },
                 "PAYMENTS":{
                     "ADMINISTRATIVE_PENALTY":"Administrative Penalty",
                     "ADDRESS_SEARCH_FEE":"Address Search Fee",
                     "LATE_PAYMENT_FEE":"Late Payment Fee",
-                    "SERVICE_CHARGE":"Service Charge",
+                    "SERVICE_CHARGE":"Processing Fees",
                     "TOTAL":"Total",
                     "PAY_WITH_CARD":"Pay with Card"
                 },
@@ -41,6 +41,9 @@ export const LANGUAGE = {
                 "VIOLATION_NOTICE":"Violation Notice Number",
                 "PAYMENT_AMOUNT":"Payment Amount",
                 "PAYMENT_MADE":"Payment made",
+                "PLATE_NUMBER":"Plate Number",
+                "SERVICE_CHARGE":"Processing Fees",
+                "PENALTY_AMOUNT":"Administrative Penalty",
                 "WAITING_FOR":"Waiting for",
                 "PAYMENT_DATE":"Payment date",
                 "REFERENCE_NO":"Reference Number",
@@ -123,5 +126,6 @@ export const LANGUAGE = {
 
 export const ENV = {
     // "server": "http://localhost:3000"
-    "server": "https://api.payjarvis.com"
+    "server": "https://api.payjarvis.com",
+    // "server": "https://bf901ace.ngrok.io"
 }

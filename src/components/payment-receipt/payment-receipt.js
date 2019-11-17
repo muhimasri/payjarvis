@@ -29,9 +29,10 @@ class Payment extends React.Component{
         const { language_text, receipt } = this.props;
         const paymentText=language_text.PAYMENT;
         const popupText=language_text.SUBSCRIBE_POPUP;
+        const serviceChange = Number(this.state.details.paidAmount) - Number(this.state.details.administrativePenaltyAmount);
         return(
             <React.Fragment>
-                <div className="detail-data payment-title">
+                <div className="detail-data payment-title container-inner">
                     <img src={BoyImg} className="main-img" alt="Banner"/>
                     {/* <h4 className="site--main">Please wait...</h4> */}
                     <div className="payment-details">
@@ -39,8 +40,8 @@ class Payment extends React.Component{
                             <li> <span className="disable-font">{paymentText.VIOLATION_NOTICE}</span>
                                 <span>{this.state.details.violationNoticeNumber}</span>
                             </li>
-                            <li> <span className="disable-font">{paymentText.PAYMENT_AMOUNT}</span>
-                                <span>${this.state.details.paidAmount}</span>
+                            <li> <span className="disable-font">{paymentText.PLATE_NUMBER}</span>
+                                <span>{this.state.details.plateNumber}</span>
                             </li>
                         </ul>
                     </div>
@@ -57,8 +58,18 @@ class Payment extends React.Component{
                             <li> <span className="disable-font">{paymentText.PAYMENT_DATE}</span> 
                                 <span>{this.state.details.paidDate}</span>
                             </li>
-                            <li> <span className="disable-font">{paymentText.REFERENCE_NO}</span>
-                                <span>919823489</span>
+                            <li> <span className="disable-font">{paymentText.PENALTY_AMOUNT}</span>
+                                <span>${this.state.details.administrativePenaltyAmount}</span>
+                            </li>
+                            <li> <span className="disable-font">{paymentText.SERVICE_CHARGE}</span>
+                                <span>${serviceChange}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="payment-details">
+                        <ul className="no-border">
+                            <li> <span className="disable-font">{paymentText.PAYMENT_AMOUNT}</span>
+                                <span>${this.state.details.paidAmount}</span>
                             </li>
                         </ul>
                     </div>
@@ -69,8 +80,8 @@ class Payment extends React.Component{
                                             <p>{popupText.TEXT1}
                                             </p>
                                         </div>
-                                        <div class="model-btn">
-                                            <a href="#" class="custom-btn mb-15" onClick={()=>{receipt.display_subscription = true; this.props.updateSubscribe(this.state.details.userId)}}>{popupText.BTN1}</a>
+                                        <div className="model-btn">
+                                            <a href="#" className="custom-btn mb-15" onClick={()=>{receipt.display_subscription = true; this.props.updateSubscribe(this.state.details.userId)}}>{popupText.BTN1}</a>
                                         </div>
                             </div>
                         }

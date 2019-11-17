@@ -4,11 +4,17 @@ h4.site--main {
     font-size: 24px !important;
 }
 
-.payment-details ul {
-    list-style: none;
-    padding-bottom: 5px;
-    border-bottom: 1px solid rgba(27, 53, 53, 0.1);
-    margin-top: 20px;
+.payment-details {
+    ul {
+        list-style: none;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(27, 53, 53, 0.1);
+        margin-top: 20px;
+    }
+}
+
+ul.no-border {
+    border-bottom: none;
 }
 
 .payment-details ul li {

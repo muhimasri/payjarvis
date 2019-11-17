@@ -73,7 +73,7 @@ class ConfirmDetailForm extends React.Component{
             <form className="form-data" noValidate autoComplete="off">
                 <div className="form-field">
                     <label htmlFor="DATE_OF_VIOLATION">{fields.DATE_OF_VIOLATION}</label><br/>
-                    <input className={error.includes('DATE_OF_VIOLATION') && 'error-field'} onChange={this.handleChange.bind(this)} value={DATE_OF_VIOLATION} type="text" name="DATE_OF_VIOLATION" id="DATE_OF_VIOLATION" />
+                    <input className={error.includes('DATE_OF_VIOLATION') && 'error-field'} onChange={this.handleChange.bind(this)} value={DATE_OF_VIOLATION} type="date" name="DATE_OF_VIOLATION" id="DATE_OF_VIOLATION" />
                     <br/>
                     {/* <div className="error-message">
                         Date of violation is more than 60 days past due. A payment will have to be made at a <span className="text-blue">Service Ontario location.</span>
@@ -85,11 +85,13 @@ class ConfirmDetailForm extends React.Component{
                     <input className={error.includes('PLATE_NUMBER') && 'error-field'} onChange={this.handleChange.bind(this)} value={PLATE_NUMBER} type="text" name="PLATE_NUMBER" id="PLATE_NUMBER" />
                     <br/>
                     <label htmlFor="PENALTY_AMOUNT">{fields.PENALTY_AMOUNT}</label><br/>
-                    <input className={error.includes('PENALTY_AMOUNT') && 'error-field'} onChange={this.handleChange.bind(this)} value={PENALTY_AMOUNT} type="text" name="PENALTY_AMOUNT" id="PENALTY_AMOUNT" />
+                    <div className="amount-container">
+                        <input className={error.includes('PENALTY_AMOUNT') && 'error-field'} onChange={this.handleChange.bind(this)} value={PENALTY_AMOUNT} type="text" name="PENALTY_AMOUNT" id="PENALTY_AMOUNT" />
+                    </div>
                     <br/>
                 </div>
                 <div className="sub-btn">
-                    <input type="button" value="SUBMIT" onClick={this.handleAction.bind(this)}/>
+                    <input type="button" value="Continue" onClick={this.handleAction.bind(this)}/>
                 </div>
             </form>
         </React.Fragment>

@@ -68,7 +68,7 @@ class CheckoutForm extends React.Component {
           this.props.sendPayment(updateObj,history)
           // console.log('Received Stripe token: ', token);
           // console.log('Received customer information: ', data);
-          // complete('success');
+          complete('success');
         });
     
         paymentRequest.canMakePayment().then((result) => {

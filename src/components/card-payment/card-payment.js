@@ -8,7 +8,7 @@ class CardPayment extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <StripeProvider apiKey="pk_test_aeMP3z7uBMAdY1pv6tD7Ag26">
+                <StripeProvider apiKey="pk_test_gcU83HUDTZBrkPYNgmyzLrPJ00au2xqGzI">
                     <Elements>
                         <CheckoutForm {...this.props} />
                     </Elements>

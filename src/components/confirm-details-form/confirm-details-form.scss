@@ -1,6 +1,14 @@
 .form-data {
     border-radius: 5px;
-    padding: 20px 10px;
+    padding: 20px 0;
+
+    input {
+        font-size: 14px;
+        font-family: 'font-book';
+        color: #3d3d3d;
+        letter-spacing: 1px;
+        background-color: #ffffff;
+    }
 }
 
 .form-data label {
@@ -9,15 +17,26 @@
     text-align: center;
 }
 
-.form-data input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    display: inline-block;
-    border-radius: 10px !important;
-    border: 1px solid rgba(27, 53, 53, 0.1);
-    box-sizing: border-box;
+.amount-container {
+    position: relative;
+    &:before {
+        content: '$';
+        position: absolute;
+        top: 20.5px;
+        left: 9px;
+        color: #3d3d3d;
+        font-family: 'font-book';
+    }
+
+    input {
+        padding-left: 22px;
+    }
+}
+
+.form-data label {
+    color: rgba(27, 53, 53, 0.5);
+    font-size: 14px;
+    text-align: center;
 }
 
 .sub-btn {
