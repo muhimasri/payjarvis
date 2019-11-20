@@ -31,7 +31,7 @@ class ConfirmDetailResult extends React.Component{
 						</li>
 						{
 							detail_data.response_success.addressSearchFee > 0 &&
-							<li>{payments.ADDRESS_SEARCH_FEE}
+							<li className="disable-font">{payments.ADDRESS_SEARCH_FEE}
 								<Tooltip title={payments.ADDRESS_SEARCH_FEE}>
 									<img src={Info} alt="Info"/>
 								</Tooltip>
@@ -41,7 +41,7 @@ class ConfirmDetailResult extends React.Component{
 						}
 						{
 							detail_data.response_success.lateFee > 0 &&
-							<li>{payments.LATE_PAYMENT_FEE}
+							<li className="disable-font">{payments.LATE_PAYMENT_FEE}
 								<Tooltip title={payments.LATE_PAYMENT_FEE}>
 									<img src={Info} alt="Info"/>
 								</Tooltip>

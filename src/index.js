@@ -33,6 +33,7 @@ const routing = (
       <Router>
         <div className="container-outer">
             <Route exact path="/" component={App} />
+            <Route exact path="/qr" component={App} />
             <Route path="/ticket-details" component={TicketDetails} />
             <Route path="/payment-method" component={PaymentMethod} />
             <Route path="/ticket-upload" component={TicketUpload} />

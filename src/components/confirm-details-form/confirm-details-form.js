@@ -54,8 +54,9 @@ class ConfirmDetailForm extends React.Component{
         if(error.length > 0) return;
         const addressSearchFee = dateValidation === 'ADDRESS_SEARCH_FEE' || dateValidation === 'LATE_FEE' ? 12 : 0;
         const lateFee = dateValidation === 'LATE_FEE' ? 25 : 0;
-        const totalAmount = Number(PENALTY_AMOUNT) + addressSearchFee + lateFee;
-        const processingFee = (totalAmount * 0.1).toFixed(2);
+        const subTotal = Number(PENALTY_AMOUNT) + addressSearchFee + lateFee;
+        const processingFee = subTotal * 0.1;
+        const totalAmount = processingFee + subTotal;
         this.props.addDetail({
             id: this.props.id, 
             dateOfViolation:DATE_OF_VIOLATION,
@@ -64,8 +65,8 @@ class ConfirmDetailForm extends React.Component{
             administrativePenaltyAmount:PENALTY_AMOUNT,
             addressSearchFee,
             lateFee,
-            processingFee,
-            totalAmount,
+            processingFee: processingFee.toFixed(),
+            totalAmount: totalAmount.toFixed(),
             email:EMAIL
         })
     }
@@ -73,7 +74,7 @@ class ConfirmDetailForm extends React.Component{
     violationDateValidation() {
         const todayDate = moment();
         const violationDate = moment(this.state.DATE_OF_VIOLATION);
-        const diffDays = todayDate.diff(violationDate, 'days');
+        const diffDays = todayDate.diff(violationDate, 'days') + 1;
         if (diffDays >= 16 && diffDays <= 30) {
             return 'ADDRESS_SEARCH_FEE';
         } else if (diffDays >= 31 && diffDays < 60) {
