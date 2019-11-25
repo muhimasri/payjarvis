@@ -18,6 +18,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import jarvisApp from './reducers';
 const store = createStore(jarvisApp, applyMiddleware(thunk));
+import LogRocket from 'logrocket';
+LogRocket.init('6f1ujj/payjarvis');
 
 const theme = createMuiTheme({
   palette: {

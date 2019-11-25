@@ -4,7 +4,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../checkout-form'
 
 class CardPayment extends React.Component{
-
+// pk_live_99KL1cH1wjF7Hcs8w02kygOG00zWWI4JmG
     render(){
         return(
             <React.Fragment>
