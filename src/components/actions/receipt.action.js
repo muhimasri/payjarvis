@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {ENV} from '../../config';
 
 export const sendPaymentReceipt = (email) => (dispatch) => {
     //this dispatch will use when api call starts
@@ -33,7 +32,7 @@ export const updateSubscribe = (userId) => (dispatch) => {
     dispatch({
         type: 'UPDATE_SUBSCRIBE',
     })
-    const url = `${ENV.server}/users/${userId}`;
+    const url = `${process.env.REACT_APP_API}/users/${userId}`;
     axios.put(url, {subscribed: true})
       .then(function (response) {        
         // dispatch( {

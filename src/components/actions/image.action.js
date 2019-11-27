@@ -1,9 +1,8 @@
 import axios from 'axios';
-import {ENV} from '../../config';
 
 export const getImageDataById = (id, history) => dispatch => {
     dispatch({type: 'GET_IMAGE_DETAIL_DATA'})
-    const url = `${ENV.server}/tickets/${id}`;
+    const url = `${process.env.REACT_APP_API}/tickets/${id}`;
     axios.get(url)
     .then(function (response) {
       // response.data.data.isPaid = true;        
@@ -26,7 +25,7 @@ export const uploadTicket = (file,history) => dispatch => {
     dispatch( {
         type: 'UPLOAD_IMAGE',
       })
-    const url = `${ENV.server}/tickets`;
+    const url = `${process.env.REACT_APP_API}/tickets`;
     const formData = new FormData();
     formData.append('file', file[0]);
     axios.post(url, formData)

@@ -11,15 +11,18 @@ import ConfirmDetails from './components/confirm-details';
 import Payment from './components/payment-receipt';
 import Paid from './components/paid-receipt';
 import { createMuiTheme } from '@material-ui/core/styles';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import ThemeProvider from '@material-ui/styles/ThemeProvider'
 //THIS IS REDUX IMPORT
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import jarvisApp from './reducers';
-const store = createStore(jarvisApp, applyMiddleware(thunk));
 import LogRocket from 'logrocket';
-LogRocket.init('6f1ujj/payjarvis');
+const store = createStore(jarvisApp, applyMiddleware(thunk));
+
+if (process.env.LOGROCKET) {
+  LogRocket.init('6f1ujj/payjarvis');
+}
 
 const theme = createMuiTheme({
   palette: {

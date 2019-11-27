@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {ENV} from '../../config';
 
 export const sendPayment = (data, history) => (dispatch) => {
 
@@ -8,7 +7,7 @@ export const sendPayment = (data, history) => (dispatch) => {
         type: 'SEND_PAYMENT',
       })
 
-    const url = `${ENV.server}/charge`;
+    const url = `${process.env.REACT_APP_API}/charge`;
     const id = data.ticketId;
     axios.post(url,data)
       .then(function (response) {        

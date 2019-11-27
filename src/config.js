@@ -127,9 +127,3 @@ export const LANGUAGE = {
     "LANGUAGE_MENU": ["ENGLISH", "FRENCH"],
     "LANGUAGE_DEFAULT": "ENGLISH"
 }
-
-export const ENV = {
-    // "server": "http://localhost:3000"
-    "server": "https://api.payjarvis.com",
-    // "server": "https://bf901ace.ngrok.io"
-}
