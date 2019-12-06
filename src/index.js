@@ -17,11 +17,17 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import jarvisApp from './reducers';
+// Analytics
 import LogRocket from 'logrocket';
+import ReactGA from 'react-ga';
 const store = createStore(jarvisApp, applyMiddleware(thunk));
 
-if (process.env.LOGROCKET) {
+if (process.env.REACT_APP_LOGROCKET) {
   LogRocket.init('6f1ujj/payjarvis');
+}
+if (process.env.REACT_APP_GOOGLE_ANALYTICS) {
+  ReactGA.initialize('UA-153121883-1');
+  ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
 const theme = createMuiTheme({

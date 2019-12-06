@@ -55,7 +55,7 @@ class ConfirmDetailForm extends React.Component{
         const addressSearchFee = dateValidation === 'ADDRESS_SEARCH_FEE' || dateValidation === 'LATE_FEE' ? 12 : 0;
         const lateFee = dateValidation === 'LATE_FEE' ? 25 : 0;
         const subTotal = Number(PENALTY_AMOUNT) + addressSearchFee + lateFee;
-        const processingFee = subTotal * 0.1;
+        const processingFee = (subTotal * 0.029) + 2.3;
         const totalAmount = processingFee + subTotal;
         this.props.addDetail({
             id: this.props.id, 
@@ -65,8 +65,8 @@ class ConfirmDetailForm extends React.Component{
             administrativePenaltyAmount:PENALTY_AMOUNT,
             addressSearchFee,
             lateFee,
-            processingFee: processingFee.toFixed(),
-            totalAmount: totalAmount.toFixed(),
+            processingFee: processingFee.toFixed(2),
+            totalAmount: totalAmount.toFixed(2),
             email:EMAIL
         })
     }
