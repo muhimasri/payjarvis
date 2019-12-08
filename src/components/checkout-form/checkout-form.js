@@ -45,12 +45,12 @@ class CheckoutForm extends React.Component {
 
   componentWillMount = () => {
     try {
-      const { detail_data, history} = this.props;
+      var { detail_data, history} = this.props;
       this.state.deviceType = Utils.getDeviceOperatingSystem();
       if (this.state.deviceType !== null) {
         const paymentRequest = this.props.stripe.paymentRequest({
           country: 'CA',
-          currency: 'cad',
+          currency: "cad",
           total: {
             label: 'Total Amount',
             amount: detail_data.response_success.totalAmount * 100
